@@ -44,7 +44,9 @@ class DB
         $keysList = array();
         $placeholders = array();
 
-        foreach($data as $key => $val) {
+        $keys = array_keys($data);
+        
+        foreach($keys as $key) {
             $keysList[] = $key;
             $placeholders[] = ':'.$key;
         }
@@ -75,11 +77,11 @@ class DB
     {
         $this->requireTransaction('Update table '.$table);
 
-        $where = '1';
         $sets = array();
         $wheres = array();
+        $keys = array_keys($data);
 
-        foreach($data as $key => $val) {
+        foreach($keys as $key) {
             $sets[] = $key.'=:'.$key;
         }
 
@@ -130,16 +132,6 @@ class DB
 
     public function fetchOne($table, $where, $select='*')
     {
-        if(is_array($select)) {
-            $select = implode(',', $select);
-        }
-
-        $whereStatement = '';
-        $tokens = array();
-        foreach($where as $key => $val) {
-            $tokens[] = $key.'=:'.$key;
-        }
-
         $query = sprintf(
             "SELECT
                 %s
@@ -147,9 +139,9 @@ class DB
                 %s
             WHERE
                 %s",
-            $select,
+            $this->compileSelect($select),
             $table,
-            implode(' AND ', $tokens)
+            $this->compileWhere($where)
         );
 
         $stmt = $this->pdo->prepare($query);
@@ -159,7 +151,36 @@ class DB
         return $stmt->fetch();
     }
 
-    public function fetchKey($table, $keyName, $where)
+    protected function compileWhere(array $where=array())
+    {
+        if(empty($where)) {
+            return '1';
+        }
+        
+        $keys = array_keys($where);
+        
+        $tokens = array();
+        foreach($keys as $key) {
+            $tokens[] = $key.'=:'.$key;
+        }
+        
+        return implode(' AND ', $tokens);
+    }
+    
+    protected function compileSelect($select)
+    {
+        if(empty($select) || $select === '*') {
+            return '*';    
+        }
+
+        if(is_array($select)) {
+            return implode(', ', $select);
+        }
+        
+        return $select;
+    }
+    
+    public function fetchKey($table, $keyName, array $where=array())
     {
         $data = $this->fetchOne($table, $where, $keyName);
         if(isset($data[$keyName])) {
@@ -168,7 +189,43 @@ class DB
 
         return null;
     }
-
+    
+    public function fetchAllKey(string $table, string $keyName, array $where=array())
+    {
+        $data = $this->fetchAll($table, $where, $keyName);
+        
+        $result = array();
+        
+        foreach($data as $entry) {
+            if(isset($entry[$keyName])) {
+                $result[] = $entry[$keyName];
+            }
+        }   
+        
+        return $result;
+    }
+    
+    public function fetchAll(string $table, array $where=array(), $select='*')
+    {
+        $query = sprintf( 
+        "SELECT 
+            %s
+        FROM
+            %s
+        WHERE
+            %s",
+            $this->compileSelect($select),
+            $table,
+            $this->compileWhere($where)
+        );
+        
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute($where);
+        
+        return $stmt->fetchAll();
+    }
+    
     protected $transactionActive = false;
 
     public function requireTransaction($operationLabel)
