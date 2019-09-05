@@ -287,6 +287,10 @@ abstract class Website_Screen
         }
 
         return $url;
-
+    }
+    
+    protected function log($message)
+    {
+        Website::log('Screen ['.$this->getID().'] | '.$message);
     }
 }

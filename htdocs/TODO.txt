@@ -1,9 +1,8 @@
- - Finish installer: 
+- Finish installer: 
   - Create database
   - Add a salt config key for securing the password
 - Add cookie disclaimer
-- Add possibility to delete biography
-- Add published/unpublished states
+- Finish possibility to delete biography
 - Mails:
   - Admin: Biography created
   - Admin: Biography modified
@@ -12,6 +11,5 @@
 - Syntax to link to other biographies?
 - Add more security to the biography text - protect against xss and co
 - When the form has an error, show a message on top of the page
-- Be able to block a biography
-- Give users the possibility to ask an admin to unblock their biography
 - Rework the layout of the authinfo screen
+- Make logging optional

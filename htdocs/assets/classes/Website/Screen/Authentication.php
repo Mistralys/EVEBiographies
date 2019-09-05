@@ -9,13 +9,19 @@ class Website_Screen_Authentication extends Website_Screen
         $code = filter_input(INPUT_GET, 'code');
         $state = filter_input(INPUT_GET, 'state');
 
-        if(empty($code) || empty($state)) {
+        if(empty($code) || empty($state)) 
+        {
+            $this->log('code or state parameters are empty.');
             $this->redirect(APP_URL);
         }
 
         $userInfo = $this->website->createEVEAuth()->handleCallback($code, $state, $_SESSION);
-        if(empty($userInfo['characterID'])) {
+        if(empty($userInfo['characterID'])) 
+        {
             $_SESSION = array();
+            
+            $this->log('Login error: userInfo array characterID missing');
+            
             die('Error while logging in. Please retry: <a href="'.$this->getScreenURL('Write').'">Login</a>');
         }
 
@@ -26,10 +32,12 @@ class Website_Screen_Authentication extends Website_Screen
 
         if($chars->foreignIDExists($userInfo['characterID']))
         {
+            $this->log('Retrieving character by foreign ID.');
             $character = $chars->getByForeignID($userInfo['characterID']);
         }
         else
         {
+            $this->log('Creating the new character ['.$userInfo['characterName'].']');
             $character = $chars->createNew($userInfo['characterID'], $userInfo['characterName']);
         }
 
@@ -51,6 +59,8 @@ class Website_Screen_Authentication extends Website_Screen
 
         unset($_SESSION['auth']);
 
+        $this->log('Auth done, redirecting to ['.$url.'].');
+        
         $this->redirect($url);
     }
 

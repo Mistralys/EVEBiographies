@@ -42,6 +42,14 @@ class Website
 
     public static function boot($screenID)
     {
+        session_start();
+        
+        //$_SESSION = array();
+        
+        define('APP_REQUEST_ID', crc32(microtime(true).'-request'));
+        
+        self::log('Request start ['.date('Y-m-d H:i:s').']');
+        
         try
         {
             $website = new Website();
@@ -106,12 +114,16 @@ class Website
     {
         if($this->isUserAuthenticated())
         {
+            $this->log('Auth | User is authenticated.');
+            
             // If the screen requires an administrator to be logged in,
             // log the current user out if it is not an admin.
             if($this->screen->requiresAdmin() && !$this->getCharacter()->isAdmin())
             {
                 // force new login by resetting the session
                 unset($_SESSION['character_id']);
+                
+                $this->log('Auth | Screen requires admin, user is not admin - removing character ID.');
             }
             else
             {
@@ -123,6 +135,8 @@ class Website
         // the authentication process steps
         if(!isset($_SESSION['auth']))
         {
+            $this->log('Auth | Initializing auth session.');
+            
             // @TODO use the APP_URL to rebuild this to avoid injection
             $landingURL = $_SERVER['REQUEST_URI'];
 
@@ -138,9 +152,13 @@ class Website
         // sending them there.
         if(!$_SESSION['auth']['info_shown'])
         {
+            $this->log('Login info not shown, redirect to auth info screen.');
+            
             $this->screen->redirect($this->createScreen('AuthInfo')->getURL());
         }
 
+        $this->log('Auth | Redirecting to EVE SSO');
+        
         // redirect to the EVE SSO to select a character
         $url = $this->createEVEAuth()->getLoginURL($_SESSION);
         $this->screen->redirect($url);
@@ -153,10 +171,6 @@ class Website
 
     protected function start(Website_Screen $screen)
     {
-        session_start();
-
-        //$_SESSION = array();
-
         $this->screen = $screen;
 
         if($screen->requiresAuthentication()) {
@@ -315,6 +329,22 @@ class Website
     public function createMailer($email, $name, $subject)
     {
         return new Mailer(Mailer::createRecipient($email, $name), $subject);
+    }
+    
+    public static function log($message)
+    {
+        $line = sprintf(
+            '%s | %s | %s',
+            APP_REQUEST_ID.'-'.session_id(),
+            date('H:i:s'),
+            $message
+        );
+        
+        error_log(
+            $line.PHP_EOL, 
+            3, 
+            APP_ROOT.'/logs/app-'.date('Y-m').'.log'
+        );
     }
 }
 
