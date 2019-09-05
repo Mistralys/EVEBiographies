@@ -67,7 +67,9 @@ class Template_Alabaster_read extends Skins_Skin_Template_Read
                 	<p><?php pts('This biography is currently not available.'); ?></p>
 
             	   	<?php
-                	   	if($this->character->getID() == $this->screen->getCharacter()->getID()) {
+            	   	    $user = $this->screen->getCharacter();
+            	   	
+                	   	if($user->isAdmin() || $this->character->getID() == $user->getID()) {
                 	   	    ?>
                 	   	    	<p>
                 	   	    		<?php pts('Reason (only you can see this):') ?>

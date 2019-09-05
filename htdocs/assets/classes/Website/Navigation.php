@@ -52,8 +52,10 @@ abstract class Website_Navigation
     protected function addScreen($name) : Website_NavigationItem
     {
         $screen = $this->website->createScreen($name);
+        
         $screen->start($this->website);
-        return $this->addURL($screen->getURL(), $screen->getNavigationTitle());
+        
+        return $this->addURL($screen->getURL(), $screen->getNavigationTitle(), $screen->requiresAdmin());
     }
     
    /**
@@ -75,9 +77,9 @@ abstract class Website_Navigation
     */
     protected $items;
     
-    protected function addURL($url, $label) : Website_NavigationItem
+    protected function addURL($url, $label, $adminOnly=false) : Website_NavigationItem
     {
-        $item = new Website_NavigationItem($this, $url, $label);
+        $item = new Website_NavigationItem($this, $url, $label, $adminOnly);
         $this->items[] = $item;
         return $item;
     }
@@ -87,6 +89,18 @@ abstract class Website_Navigation
     */
     public function getItems()
     {
-        return $this->items;
+        $result = array();
+        $charIsAdmin = $this->website->isUserAuthenticated() && $this->website->getCharacter()->isAdmin();
+        
+        foreach($this->items as $item) 
+        {
+            if($item->isAdminOnly() && !$charIsAdmin) {
+                continue;
+            }
+            
+            $result[] = $item;
+        }
+        
+        return $result;
     }
 }

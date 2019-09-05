@@ -1,13 +1,5 @@
 <?php
 
-    /**
-     * The password to use to access the database administration.
-     * The database is a SQLITE file under the <code>storage</code> folder.
-     *
-     * @var string
-     */
-    define('APP_DB_PASSWORD', '');
-
    /**
     * The absolute URL to the biographies website, without ending slash.
     *

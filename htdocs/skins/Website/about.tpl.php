@@ -46,22 +46,8 @@ class Template_Website_about extends Skins_Skin_Template_Frontend
     			<?php pts('or') ?>
 
         		<a href="<?php echo $this->getScreenURL('Nexus') ?>" class="btn btn-secondary">
-        			<?php
-        			    if($this->screen->isUserAuthenticated())
-        			    {
-        			        ?>
-        			        <i class="fa fa-portrait"></i>
-        			        <?php
-        			        pt('Browse biographies');
-        			    }
-        			    else
-        			    {
-        			        ?>
-        			        <i class="fa fa-sign-in-alt"></i>
-        			        <?php
-        			        pt('Log in to browse biographies');
-        			    }
-        			?>
+			        <i class="fa fa-portrait"></i>
+			        <?php pt('Browse biographies'); ?>
     			</a>
         	</p>
         <?php

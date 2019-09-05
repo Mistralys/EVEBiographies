@@ -10,11 +10,14 @@ class Website_NavigationItem
     
     protected $label;
     
-    public function __construct(Website_Navigation $nav, $url, $label)
+    protected $adminOnly;
+    
+    public function __construct(Website_Navigation $nav, $url, $label, $adminOnly=false)
     {
         $this->nav = $nav;
         $this->url = $url;
         $this->label = $label;
+        $this->adminOnly = $adminOnly;
     }
     
     public function getURL()
@@ -37,5 +40,10 @@ class Website_NavigationItem
         }
         
         return false;
+    }
+    
+    public function isAdminOnly() : bool
+    {
+        return $this->adminOnly;
     }
 }

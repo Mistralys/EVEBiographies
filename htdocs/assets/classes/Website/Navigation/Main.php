@@ -11,5 +11,6 @@ class Website_Navigation_Main extends Website_Navigation
         $this->addScreen('About');
         $this->addScreen('Legal');
         $this->addScreen('Contact');
+        $this->addAuthScreen('Administration');
     }
 }

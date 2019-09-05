@@ -40,7 +40,12 @@ class Website_Screen_Nexus extends Website_Screen
     
     protected function _render()
     {
+        $collection = $this->website->createBiographies();
+        $published = $collection->getPublished();
+        
         $tpl = $this->skin->createTemplate('nexus');
+        $tpl->addVar('biographies', $published);
+        
         return $tpl->render();
     }
 }

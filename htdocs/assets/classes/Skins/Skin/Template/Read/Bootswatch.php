@@ -79,14 +79,16 @@ abstract class Skins_Skin_Template_Read_Bootswatch extends Skins_Skin_Template_R
                 	<p><?php pt('This biography is currently not available.') ?></p>
 
                 	<?php
-            	   	if($this->character->getID() == $this->screen->getCharacter()->getID()) {
-            	   	    ?>
-            	   	    	<p>
-            	   	    		<?php pts('Reason (only you can see this):') ?>
-            	   	    		<?php echo $this->biography->getValidationMessage() ?>
-            	   	    	</p>
-            	   	    <?php
-            	   	}
+                    	$user = $this->screen->getCharacter();
+                    	
+                    	if($user->isAdmin() || $this->character->getID() == $user->getID()) {
+                	   	    ?>
+                	   	    	<p>
+                	   	    		<?php pts('Reason (only you can see this):') ?>
+                	   	    		<?php echo $this->biography->getValidationMessage() ?>
+                	   	    	</p>
+                	   	    <?php
+                	   	}
             	   	?>
                 </div>
         	</main>

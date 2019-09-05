@@ -221,6 +221,10 @@ class Website
         return $this->createCollection('Characters');
     }
 
+   /**
+    * Creates/returns the biographies collection management class.
+    * @return \EVEBiographies\Biographies
+    */
     public function createBiographies() : Biographies
     {
         return $this->createCollection('Biographies');
