@@ -1,0 +1,22 @@
+H1{
+margin-bottom:40px;
+}
+
+.portrait-image{
+float:left;
+width:160px;
+border:solid 1px #000;
+border-radius:6px;
+margin-right:20px;
+}
+
+.abstract{
+padding-top:30px;
+}
+
+.login-button::after{
+content:'';
+display:block;
+clear:both;
+margin-bottom:60px;
+}

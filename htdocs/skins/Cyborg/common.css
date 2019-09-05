@@ -1,0 +1,142 @@
+html,
+body {
+background-size:cover;
+background-attachment:fixed;
+padding-top:40px;
+}
+
+.cover-container {
+width:65%;
+margin:0 auto;
+padding:40px;
+box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+border-radius:6px;
+}
+
+.cover-portrait{
+width:28%;
+margin-right: 2rem;
+border:solid 1px #000;
+border-radius:6px;
+box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.36);
+}
+
+.cover-heading{
+font-size:3.2rem;
+}
+
+.cover-subheading{
+display:block;
+font-size:1.7rem;
+opacity:0.5;
+}
+
+.bio-name{
+display:flex;
+align-items:center;
+}
+
+.bio-body{
+line-height:1.6rem;
+clear:both;
+padding-top:1rem;
+}
+
+.bio-body P{
+margin-bottom:1.5rem;
+}
+
+.bio-body H1{
+font-size:2.2rem;
+margin-top:4rem;
+}
+
+.bio-body H1:first-child{
+margin-top:2rem;
+}
+
+FOOTER{
+margin-top:100px;
+padding-top:20px;
+border-top:dotted 1px rgba(255,255,255,0.1);
+}
+
+FOOTER .inner > P{
+margin-bottom:6px;
+}
+
+FOOTER .inner > P:last-child{
+margin-bottom:0;
+}
+
+/* SMALLSCREEN ----------------------------------------------------------------------- */
+@media screen and (max-width: 500px) {
+	.cover-container {
+		width:86%;
+	}
+	.cover-portrait{
+		width:100% !important;
+		margin-bottom:1rem;
+	}
+	.cover-heading{
+		font-size:1.5rem !important;
+		line-height:1.5rem !important;
+	}
+	.cover-subheading{
+		font-size:1rem !important;
+	}
+	.bio-name{
+		display:block;
+	}
+	.bio-body{
+		font-size:1rem !important;
+		line-height:1.2rem !important;
+	}
+	.bio-body H1{
+		font-size:1.9rem !important;
+	}	
+}
+
+
+
+@media screen and (min-width: 501px) and (max-width: 1150px) {
+	.cover-container {
+		width:76%;
+	}
+	.cover-portrait{
+		width:60% !important;
+		margin-bottom:1rem;
+	}
+	.cover-heading{
+		font-size:1.7rem !important;
+	}
+	.cover-subheading{
+		font-size:1rem !important;
+	}
+	.bio-name{
+		display:block;
+	}
+	.bio-body{
+		font-size:1.2rem !important;
+		line-height:1.4rem !important;
+	}
+	.bio-body H1{
+		font-size:1.9rem !important;
+	}	
+}
+
+@media screen and (min-width: 830px) and (max-width: 1150px) {
+	.cover-portrait{
+		width:50% !important;
+	}
+}
+
+@media screen and (min-width: 1150px) and (max-width: 9900px) {
+	.cover-portrait{
+		width:28% !important;
+	}
+	.cover-heading{
+		font-size:2.6rem !important;
+		line-height:2.8rem !important;
+	}
+}

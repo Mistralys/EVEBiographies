@@ -1,0 +1,4 @@
+label="Cosmic Nebula"
+credit="cosmicspark@deviantart"
+link="https://www.deviantart.com/cosmicspark/art/Nebula-Stock-2-603262561"
+license="Free for non-commercial use, notification required at source link."

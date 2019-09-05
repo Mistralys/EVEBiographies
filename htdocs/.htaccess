@@ -1,0 +1,12 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^read/([A-Za-z\-]+)$   read.php?char=$1 [L]
+RewriteRule ^share/([A-Za-z\-]+)$   share.php?char=$1 [L]
+RewriteRule ^write$   write.php [L]
+RewriteRule ^logout$   logout.php [L]
+RewriteRule ^nexus$   nexus.php [L]
+RewriteRule ^showcase$   showcase.php [L]
+RewriteRule ^legal$   legal.php [L]
+RewriteRule ^report$   report.php [L]
+RewriteRule ^contact$   contact.php [L]

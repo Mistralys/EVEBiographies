@@ -1,0 +1,4 @@
+label="Cosmos 8 - Aurora Planet"
+credit="Funerium@deviantart"
+link="https://www.deviantart.com/funerium/art/Package-Cosmos-8-146789953"
+license="Free for non-commercial use, notification required at source link."

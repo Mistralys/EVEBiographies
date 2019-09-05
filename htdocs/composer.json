@@ -1,0 +1,19 @@
+{
+    "name" : "EVE Biographies",
+    "description" : "Write your character's biography with no length limit. You can choose from a number of color schemes to customize the layout. The biographies are made to be pretty and easy to read, and they're free!",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories":[
+        {
+            "type":"vcs",
+            "url":"https://github.com/Mistralys/HTML_QuickForm2.git"
+        }
+    ],
+    "require" : 
+    {
+        "erusev/parsedown" : "1.7.1",
+        "zkillboard/crestsso" : "0.0.5",
+        "pear/html_quickform2" : "dev-trunk",
+        "phpmailer/phpmailer": "6.0.7"
+    }
+}

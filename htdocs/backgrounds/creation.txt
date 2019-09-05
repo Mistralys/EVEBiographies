@@ -1,0 +1,4 @@
+label="Creation"
+credit="BLPH@deviantart"
+link="https://www.deviantart.com/blph/art/Creation-463882043"
+license="Free for non-commercial use, notification required at source link."

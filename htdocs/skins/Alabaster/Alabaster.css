@@ -1,0 +1,98 @@
+html,
+body {
+height: 100%;
+color:#666;
+background-color:#f3f4ee;
+}
+
+.cover-container {
+width:65%;
+height:100%;
+margin:0 auto;
+background:url(bg-left.png);
+background-repeat:repeat-y;
+background-color:rgb(248, 250, 247);
+}
+
+.cover-inner{
+height:100%;
+background:url(bg-right.png);
+background-position:right;
+background-repeat:repeat-y;
+}
+
+.content-container{
+padding:4% 140px 5% 140px;
+}
+
+.cover-portrait{
+width:28%;
+margin-right: 2rem;
+border:solid 1px #000;
+border-radius:6px;
+box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.36);
+}
+
+.cover-heading{
+font-size:3.2rem;
+}
+
+.cover-subheading{
+display:block;
+font-size:1.7rem;
+opacity:0.5;
+}
+
+.bio-name{
+display:flex;
+align-items:center;
+}
+
+.bio-body{
+line-height:1.6rem;
+clear:both;
+padding-top:1rem;
+}
+
+.bio-body P{
+margin-bottom:1.5rem;
+}
+
+.bio-body EM{
+color:#cecac8;
+}
+
+.bio-body H1{
+font-size:2.2rem;
+margin-top:4rem;
+}
+
+.bio-body H1:first-child{
+margin-top:2rem;
+}
+
+FOOTER{
+margin-top:100px;
+}
+
+A:link,
+A:visited{
+color:#5f5f5f;
+}
+
+A:hover,
+A:active{
+color:#888;
+}
+
+@media screen and (min-width: 800px) and (max-width: 1150px) {
+	.cover-container {
+		width:75%;
+	}
+}
+
+@media screen and (min-width: 100px) and (max-width: 800px) {
+	.cover-container {
+		width:95%;
+	}
+}

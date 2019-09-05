@@ -1,0 +1,4 @@
+label="Celestial background 45 (Vertical)"
+credit="FrostBo@deviantart"
+link="https://www.deviantart.com/frostbo/art/Celestial-Background-45-320313900"
+license="Free for commercial use, redistribution prohibited."

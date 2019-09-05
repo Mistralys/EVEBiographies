@@ -1,0 +1,4 @@
+label="Asteroid mining installation"
+credit="AeonOfTime"
+link="http://eve.aeonoftime.com"
+license="Creative Commons BY-NC 4.0"
