@@ -6,9 +6,6 @@ class Website_Screen_Administration extends Website_Screen
 {
     protected function _start()
     {
-        if(!$this->character->isAdmin()) {
-            $this->redirectWithErrorMessage('Only administrators may use these functions', $this->getExitURL());
-        }
     }
     
     protected function getExitURL() : string
@@ -53,6 +50,10 @@ class Website_Screen_Administration extends Website_Screen
     
     protected function _render()
     {
+        if(!$this->website->isUserAuthenticated() || !$this->getCharacter()->isAdmin()) {
+            $this->redirectWithErrorMessage('Only administrators may use these functions', $this->getExitURL());
+        }
+        
         $action = $this->request->getParam('action');
         
         $method = 'action_'.$action;
@@ -60,10 +61,9 @@ class Website_Screen_Administration extends Website_Screen
             return $this->$method();
         }
 
-        $this->redirectWithErrorMessage(
-            'Unknown administrator function', 
-            $this->getExitURL()
-        );
+        $tpl = $this->createTemplate('adminOverview');
+        
+        return $tpl->render();
     }
     
    /**
