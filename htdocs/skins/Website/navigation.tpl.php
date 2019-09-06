@@ -66,7 +66,6 @@ class Template_Website_navigation extends Skins_Skin_Template
                 </div>
               </div>
             </nav>
-            <div class="navbar-placeholder"></div>
         <?php 
         
 		return ob_get_clean();

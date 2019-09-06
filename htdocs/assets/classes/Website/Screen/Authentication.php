@@ -42,7 +42,7 @@ class Website_Screen_Authentication extends Website_Screen
         }
         
         if($character->countLogins() == 0) {
-            $this->addSuccessMessage(t('Hello %1$s, welcome to %2$s.', $character->getName()), true);
+            $this->addSuccessMessage(t('Hello %1$s, welcome to %2$s.', $character->getName(), $this->website->getName()), true);
         } else {
             $this->addSuccessMessage(t('Welcome back, %1$s.', $character->getName()), true);
         }

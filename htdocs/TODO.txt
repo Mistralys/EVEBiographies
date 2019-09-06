@@ -7,3 +7,6 @@
 - Add a preview to the font selection
 - Create new skin thumbnails
 - Make the skin thumbnails bigger
+- Biographies views counter: avoid exploits
+- Add minimalist site nav to the read pages
+- Add the portrait to the publish mail to be able to moderate this as well

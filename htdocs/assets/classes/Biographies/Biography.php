@@ -8,7 +8,13 @@ class Biographies_Biography extends DB_Item
 
     public function setText($text) : Biographies_Biography
     {
-        $this->setDataKey('text', $text);
+        if($this->setDataKey('text', $text))
+        {
+            // update the word count as well
+            $raw = strip_tags($text);
+            $this->setDataKey('words', str_word_count($raw));
+        }
+        
         return $this;
     }
 
@@ -33,7 +39,23 @@ class Biographies_Biography extends DB_Item
     {
         return $this->getDataKey('skin');
     }
-
+    
+    public function countWords() : int
+    {
+        return (int)$this->getDataKey('words');
+    }
+    
+    public function countViews() : int
+    {
+        return (int)$this->getDataKey('views');
+    }
+    
+    public function incrementViews()
+    {
+        $this->setDataKey('views', $this->countViews()+1);
+        return $this;
+    }
+    
     public function setPublished(bool $published=true)
     {
         $state = '0';

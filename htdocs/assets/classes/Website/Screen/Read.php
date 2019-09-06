@@ -43,6 +43,15 @@ class Website_Screen_Read extends Website_Screen
 
         $this->bioCharacter = $chars->getBySlug($_REQUEST['char']);
         $this->biography = $this->bioCharacter->getBiography();
+        
+        // count the view if it's not the owner
+        if($this->bioCharacter !== $this->character) 
+        {
+            $this->startTransaction();
+            $this->biography->incrementViews();
+            $this->biography->save();
+            $this->endTransaction();
+        }
     }
 
     public function getBioCharacter()

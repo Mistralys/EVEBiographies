@@ -1,5 +1,12 @@
 BODY{
 font-size:0.96rem;
+padding-top:60px;
+}
+
+.content-wrapper{
+background-image:url(img/page-bg.png);
+background-repeat:repeat-x;
+background-position:top;
 }
 
 MAIN,
@@ -39,8 +46,13 @@ padding:20px;
 background:rgba(255,255,255,0.1);
 }
 
+.navbar.bg-dark{
+border:0 !important;
+background:#06151b !important;
+}
+
 MAIN.with-navbar{
-margin-top:60px;
+padding-top:60px;
 }
 
 .form-check-label{
@@ -52,7 +64,7 @@ display:inline-block;
 margin-right:8px;
 }
 
-.navbar-placeholder{
+.navbar.fixed-top{
 height:60px;
 }
 

@@ -1,0 +1,25 @@
+.biographies-overview{
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.biographies-overview .bio-entry{
+padding:0 0 13px 0;
+margin:0;
+}
+
+.biographies-overview .bio-thumbnail{
+display:inline-block;
+margin-right:13px;
+}
+
+.biographies-overview .bio-thumbnail > A > IMG{
+width:128px;
+border-radius:6px;
+border:solid 1px #3d9bd1;
+}
+
+.biographies-overview .bio-text{
+display:inline-block;
+}

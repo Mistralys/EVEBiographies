@@ -18,6 +18,7 @@ abstract class Skins_Skin_Template_Frontend extends Skins_Skin_Template
         ?>
             <?php echo $this->renderNavigation('Main'); ?>
         
+        	<div class="content-wrapper">
 	        <main role="main" class="with-navbar">
 	        	<div class="container">
     	        	<?php echo $this->renderMessages() ?>
@@ -48,6 +49,7 @@ abstract class Skins_Skin_Template_Frontend extends Skins_Skin_Template
             		</p>
                 </div>
         	</footer>
+        	</div>
         <?php 
         
 		return ob_get_clean();

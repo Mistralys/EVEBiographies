@@ -20,7 +20,7 @@ class Website_Screen_About extends Website_Screen
 
     public function getPageTitle()
     {
-        return t('EVE Online biographies');
+        return t('Finally, limitless biographies \o/');
     }
 
     public function getNavigationTitle()

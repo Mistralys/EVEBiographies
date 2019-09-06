@@ -107,6 +107,10 @@ class Characters_Character extends DB_Item
 
     public function getPortraitURL()
     {
+        if(!$this->hasPortrait()) {
+            return APP_URL.'/skins/Website/img/default-portrait.jpg';
+        }
+        
         return sprintf(
             '%s/portraits/%s.%s',
             APP_URL,

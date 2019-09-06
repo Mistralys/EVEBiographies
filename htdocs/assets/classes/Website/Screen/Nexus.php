@@ -20,12 +20,12 @@ class Website_Screen_Nexus extends Website_Screen
   
     public function getPageTitle()
     {
-        return t('Biographies showcase');
+        return t('Browse biographies');
     }
     
     public function getNavigationTitle()
     {
-        return t('Showcase');
+        return t('Browse');
     }
     
     public function getDispatcher()

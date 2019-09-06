@@ -15,16 +15,16 @@ class Template_Website_about extends Skins_Skin_Template_Frontend
         		<?php
         		    pts('EVE Online\'s ingame biographies have a pretty short size limit.');
         		    pts('Your character deserves more!');
-        		    pts('Discover this free service, which lets you create a pretty biography out of game with a proper size limit.');
+        		    pts('Discover this free service, which lets you create a pretty biography out of game with many customization options.');
         		?>
         	</p>
         	<h2><?php pt('How does it work?') ?></h2>
         	<p>
         		<?php
-        		    pts('Simply sign in via EVE Online\'s SSO to access all available biographies.');
-        		    pts('To create or edit a biography, select the relevant character when you sign on:');
+        		    pts('Simply sign in via EVE Online\'s SSO to browse all available biographies.');
+        		    pts('To create or edit your own biography, select the relevant character when you sign on:');
         		    pts('Nothing more is needed!');
-        		    pts('You can start writing the biography right away.');
+        		    pts('You can start writing right away.');
     		?>
         	</p>
         	<h2><?php pt('Features') ?></h2>
