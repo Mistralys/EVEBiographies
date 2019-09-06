@@ -270,4 +270,22 @@ class DB
 
         return $this;
     }
+    
+    public function delete(string $table, array $where)
+    {
+        $query = sprintf( 
+        "DELETE FROM
+            %s
+        WHERE
+            %s",
+            $table,
+            $this->compileWhere($where)
+        );
+            
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute($where);
+        
+        return $stmt->rowCount();
+    }
 }
