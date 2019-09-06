@@ -1,0 +1,7 @@
+How to create a skin screenshot:
+
+1) Open AeonOfTime's biography
+2) Background: Celestial Background 45
+3) Viewport size: 1200px (use Chrome's responsive preview)
+4) Crop to 1200 x 900px
+5) Save as JPG in the skin's folder as thumb.jpg

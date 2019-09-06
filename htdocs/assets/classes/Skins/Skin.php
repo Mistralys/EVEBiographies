@@ -104,7 +104,7 @@ abstract class Skins_Skin
     
     public function getThumbnailURL() : string
     {
-        return $this->getURL().'/thumb.png';
+        return $this->getURL().'/thumb.jpg';
     }
 
     protected $jsOnload = array();

@@ -37,11 +37,16 @@ margin-top:13px;
 .thumbs .thumb{
 display:inline-block;
 width:130px;
-height:72px;
+height:69px;
 background-size:cover;
 margin:0 5px 5px 0;
 cursor:pointer;
 border:solid 1px #000;
+}
+
+#skin-previews .thumb{
+width:210px;
+height:140px;
 }
 
 .thumbs .thumb:hover{
