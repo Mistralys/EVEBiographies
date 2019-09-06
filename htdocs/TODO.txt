@@ -1,15 +1,9 @@
-- Finish installer: 
-  - Create database
-  - Add a salt config key for securing the password
+- Finish the installer
 - Add cookie disclaimer
 - Finish possibility to delete biography
-- Mails:
-  - Admin: Biography created
-  - Admin: Biography modified
-  - Admin: Report
-- Add a views counter
+- Add a views counter (stats tab?)
 - Syntax to link to other biographies?
 - Add more security to the biography text - protect against xss and co
 - When the form has an error, show a message on top of the page
-- Rework the layout of the authinfo screen
-- Make logging optional
+- Refine the layout of the authinfo screen
+- Add form nonces for security purposes
