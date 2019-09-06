@@ -119,20 +119,12 @@ abstract class Website_Screen
 
     protected function displayError($message)
     {
-        ?>
-        <?php
-        exit;
+        // @TODO
+        throw new Website_Exception('Not implemented', 1111);
     }
 
     protected function createTemplate($id) : Skins_Skin_Template
     {
-        if(!$this->started) {
-            throw new Website_Exception(
-                'Cannot create template before screen is started',
-                self::ERROR_CANNOT_CREATE_TEMPLATE_BEFORE_START
-            );
-        }
-
         return $this->skin->createTemplate($id);
     }
 
