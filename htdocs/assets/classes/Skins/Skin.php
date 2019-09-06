@@ -114,8 +114,12 @@ abstract class Skins_Skin
      * @param string $statement
      * @return Skins_Skin
      */
-    public function addJSOnload(string $statement) : Skins_Skin
+    public function addJSOnload(string $statement, bool $allowDuplicates = true) : Skins_Skin
     {
+        if(!$allowDuplicates && in_array($statement, $this->jsOnload)) {
+            return $this;
+        }
+        
         $this->jsOnload[] = $statement;
         return $this;
     }

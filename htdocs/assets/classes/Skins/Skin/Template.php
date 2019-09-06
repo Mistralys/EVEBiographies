@@ -109,11 +109,12 @@ abstract class Skins_Skin_Template
    /**
     * Adds a javascript statement to execute on page load via jQuery.
     * @param string $statement
+    * @param bool $allowDuplicates
     * @return Skins_Skin_Template
     */
-    public function addJSOnload(string $statement) : Skins_Skin_Template
+    public function addJSOnload(string $statement, bool $allowDuplicates = true) : Skins_Skin_Template
     {
-        $this->skin->addJSOnload($statement);
+        $this->skin->addJSOnload($statement, $allowDuplicates);
         return $this;
     }
     
@@ -262,8 +263,16 @@ abstract class Skins_Skin_Template
         return $nav->render();
     }
 
+    protected $cookieConsentAdded = false;
+    
     public function addCookieConsent()
     {
+        if($this->cookieConsentAdded) {
+            return;
+        }
+        
+        $this->cookieConsentAdded = true;
+        
         $this->addStylesheet('https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css');
         $this->addJavascript('https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js');
         
@@ -287,6 +296,6 @@ abstract class Skins_Skin_Template
             t('Cookies are used to remember your preferences and to allow you to sign in.'),
             t('Dismiss message'),
             $this->screen->getWebsite()->createScreen('Legal')->getURL()
-        ));
+        ), false);
     }
 }
