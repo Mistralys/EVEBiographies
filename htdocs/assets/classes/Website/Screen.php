@@ -162,7 +162,7 @@ abstract class Website_Screen
         $this->redirect($url);
     }
 
-    protected function addMessage($type, $message) : Website_Screen
+    protected function addMessage($type, $message, $dismissable=false) : Website_Screen
     {
         if(!isset($_SESSION['messages'])) {
             $_SESSION['messages'] = array();
@@ -170,30 +170,31 @@ abstract class Website_Screen
 
         $_SESSION['messages'][] = array(
             'text' => $message,
-            'type' => $type
+            'type' => $type,
+            'dismissable' => $dismissable
         );
 
         return $this;
     }
 
-    protected function addErrorMessage($message)
+    protected function addErrorMessage($message, $dismissable=false)
     {
-        $this->addMessage(self::MESSAGE_ERROR, $message);
+        $this->addMessage(self::MESSAGE_ERROR, $message, $dismissable);
     }
 
-    protected function addInfoMessage($message)
+    protected function addInfoMessage($message, $dismissable=false)
     {
-        $this->addMessage(self::MESSAGE_INFO, $message);
+        $this->addMessage(self::MESSAGE_INFO, $message, $dismissable);
     }
 
-    protected function addWarningMessage($message)
+    protected function addWarningMessage($message, $dismissable=false)
     {
-        $this->addMessage(self::MESSAGE_WARNING, $message);
+        $this->addMessage(self::MESSAGE_WARNING, $message, $dismissable);
     }
 
-    protected function addSuccessMessage($message)
+    protected function addSuccessMessage($message, $dismissable=false)
     {
-        $this->addMessage(self::MESSAGE_SUCCESS, $message);
+        $this->addMessage(self::MESSAGE_SUCCESS, $message, $dismissable);
     }
 
     public function redirect($url)

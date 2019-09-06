@@ -58,6 +58,13 @@ class Characters extends DB_Collection
         return $this->db->fetchKey($this->getTableName(), $this->getPrimaryName(), array('foreign_id' => $foreignID));
     }
 
+   /**
+    * Retrieves a character by its EVE Online ID.
+    * 
+    * @param string $foreignID
+    * @throws Website_Exception
+    * @return \EVEBiographies\Characters_Character
+    */
     public function getByForeignID($foreignID)
     {
         $id = $this->getIDByForeignID($foreignID);

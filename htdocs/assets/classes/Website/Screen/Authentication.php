@@ -40,6 +40,12 @@ class Website_Screen_Authentication extends Website_Screen
             $this->log('Creating the new character ['.$userInfo['characterName'].']');
             $character = $chars->createNew($userInfo['characterID'], $userInfo['characterName']);
         }
+        
+        if($character->countLogins() == 0) {
+            $this->addSuccessMessage(t('Hello %1$s, welcome to %2$s.', $character->getName()), true);
+        } else {
+            $this->addSuccessMessage(t('Welcome back, %1$s.', $character->getName()), true);
+        }
 
         $character
         ->setLastLogin(new \DateTime())

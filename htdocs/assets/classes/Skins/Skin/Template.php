@@ -205,8 +205,24 @@ abstract class Skins_Skin_Template
         
         foreach($_SESSION['messages'] as $def)
         {
+            $classes = array(
+                'alert',
+                'alert-'.$def['type']
+            );
+            
+            if($def['dismissable']) {
+                $classes[] = 'alert-dismissible';
+            }
+            
             ?>
-           		<div class="alert alert-<?php echo $def['type'] ?>">
+           		<div class="<?php echo implode(' ', $classes) ?>">
+               		<?php 
+               		if($def['dismissable']) {
+               		    ?>
+               		    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+               		    <?php 
+               		}
+               		?>
                		<?php echo $def['text'] ?>
            		</div>
     		<?php 
