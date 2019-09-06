@@ -8,7 +8,7 @@
  * @subpackage Configuration
  */
 
-if(!defined('APP_DB_PASSWORD')) {
+if(!defined('APP_ROOT')) {
     die('May not be accessed directly.');
 }
 
