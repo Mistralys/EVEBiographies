@@ -177,7 +177,6 @@ class Website_Screen_Write extends Website_Screen
             $bio = $form->addTextarea('biography');
             $bio->setId($this->editorID);
             $bio->setLabel(t('Biography text'));
-            $bio->addRule('required', t('This field is required.'));
             $bio->setRows(25);
             $bio->setComment($this->getBioComments());
         }
