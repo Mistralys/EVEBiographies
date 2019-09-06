@@ -1,6 +1,16 @@
 <?php
 
     define('APP_ROOT', __DIR__);
+    
+   /**
+    * A request ID that is used in logfiles to identify individual requests
+    * @var string
+    */
+    define('APP_REQUEST_ID', crc32(microtime(true).'-request'));
+    
+    define('APP_LOGMODE_NONE', 'None');
+    define('APP_LOGMODE_FILE', 'File');
+    define('APP_LOGMODE_ECHO', 'Echo');
 
     $autoload = APP_ROOT.'/vendor/autoload.php';
     if(!file_exists($autoload)) {
@@ -38,6 +48,15 @@
         die(
             '<p style="color:#cc0000"><b>ERROR:</b> The admin characters list is empty.</p>'
         );
+    }
+    
+    if(APP_DEBUGGING) 
+    {
+        error_reporting(E_ALL);
+    }
+    else
+    {
+        error_reporting(0);
     }
     
     /**

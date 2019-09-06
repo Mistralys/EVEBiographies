@@ -16,10 +16,33 @@
      * @var bool
      */
     define('APP_PRETTY_URLS', false);
+
+   /**
+    * The logging mode to use: defines where logging messages are 
+    * sent. This is mainly used for develpment debugging purposes.
+    * 
+    * There are three modes:
+    * 
+    * APP_LOGMODE_NONE = No logging is done.
+    * APP_LOGMODE_FILE = The log is sent to files in the logs/ folder
+    * APP_LOGMODE_ECHO = All log messages are sent to the browser
+    * 
+    * @var string
+    * @see APP_DEBUGGING
+    */
+    define('APP_LOG_MODE', APP_LOGMODE_NONE);
+    
+   /**
+    * Whether to enable debugging: all PHP errors and notices will 
+    * be shown if enabled.
+    * 
+    * @var bool
+    */
+    define('APP_DEBUGGING', false);
     
 
     // -----------------------------------------------------------------------------
-    // EVE ONLINE CREST API
+    // EVE ONLINE API DETAILS
     // -----------------------------------------------------------------------------
     
    /**

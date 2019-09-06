@@ -11,6 +11,8 @@ require_once 'Mailer.php';
 
 class Website
 {
+    const ERROR_INVALID_LOGGING_MODE = 37201;
+    
    /**
     * @var Biographies
     */
@@ -36,20 +38,26 @@ class Website
     */
     protected $request;
 
+    /**
+     * @var Website_Logger
+     */
+    protected static $logger;
+    
     protected function __construct()
     {
         $this->request = new Request();
     }
-
+    
     public static function boot($screenID)
     {
         session_start();
         
         //$_SESSION = array();
         
-        define('APP_REQUEST_ID', crc32(microtime(true).'-request'));
+        self::initLogging();
         
-        self::log('Request start ['.date('Y-m-d H:i:s').']');
+        self::log('');
+        self::log('Starting request [#'.APP_REQUEST_ID.'] | Session ID ['.session_id().'] | Date ['.date('Y-m-d').']');
         
         try
         {
@@ -66,7 +74,32 @@ class Website
 
         return null;
     }
-
+    
+    protected static function initLogging()
+    {
+        if(APP_LOG_MODE === APP_LOGMODE_NONE) {
+            return;
+        }
+        
+        if(!in_array(APP_LOG_MODE, array(APP_LOGMODE_ECHO, APP_LOGMODE_FILE))) 
+        {
+            throw new Website_Exception(
+                'Invalid logging mode',
+                self::ERROR_INVALID_LOGGING_MODE
+            );
+        }
+        
+        require_once 'Website/Logger.php';
+        
+        $loggerFile = 'Website/Logger/'.APP_LOG_MODE.'.php';
+        
+        require_once $loggerFile;
+        
+        $loggerClass = '\EVEBiographies\Website_Logger_'.APP_LOG_MODE;
+        
+        self::$logger = new $loggerClass();
+    }
+    
     public function createScreen($screenID) : Website_Screen
     {
         $screenClass = 'Website_Screen_'.$screenID;
@@ -339,62 +372,16 @@ class Website
     
     public static function log($message)
     {
+        if(!isset(self::$logger)) {
+            return;
+        }
+        
         $line = sprintf(
-            '%s | %s | %s',
-            APP_REQUEST_ID.'-'.session_id(),
+            '%s | %s',
             date('H:i:s'),
             $message
         );
         
-        error_log(
-            $line.PHP_EOL, 
-            3, 
-            APP_ROOT.'/logs/app-'.date('Y-m').'.log'
-        );
+        self::$logger->debug($line);
     }
-}
-
-/**
- * Translates the specified text to the current UI locale.
- * @return string
- */
-function t()
-{
-    $args = func_get_args();
-    if(count($args) == 1) {
-        return $args[0];
-    }
-
-    return call_user_func_array('sprintf', $args);
-}
-
-function pt()
-{
-    $args = func_get_args();
-    if(count($args) == 1) {
-        echo $args[0];
-        return;
-    }
-
-    echo call_user_func_array('sprintf', $args);
-}
-
-function pts()
-{
-    $args = func_get_args();
-    if(count($args) == 1) {
-        echo $args[0].' ';
-        return;
-    }
-
-    echo call_user_func_array('sprintf', $args).' ';
-}
-
-function nextJSID()
-{
-    static $counter = 0;
-
-    $counter++;
-
-    return 'el'.$counter;
 }
