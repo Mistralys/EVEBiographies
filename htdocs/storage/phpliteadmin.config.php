@@ -24,7 +24,7 @@ $allowed_extensions = array('sqlite');
 
 $databases = array(
 	array(
-		'path'=> APP_DB_PATH,
+		'path'=> __DIR__.'/biographies.sqlite',
 		'name'=> 'biographies'
 	),
 );

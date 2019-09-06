@@ -66,7 +66,6 @@
     define('APP_ADMIN_CHARACTERS', serialize($adminCharacters)); unset($adminCharacters);
     
     define('APP_GITHUB_URL', 'https://github.com/Mistralys/EVEBiographies');
-    define('APP_DB_PATH', APP_ROOT.'/storage/biographies.sqlite');
     define('APP_CREST_CALLBACK_URL', APP_URL.'/auth.php');
     
     require_once 'Website.php';
