@@ -2,7 +2,6 @@
 - Add cookie disclaimer
 - Add a views counter (stats tab?)
 - Syntax to link to other biographies?
-- Add more security to the biography text - protect against xss and co
 - When the form has an error, show a message on top of the page
 - Refine the layout of the authinfo screen
 - Add form nonces for security purposes
