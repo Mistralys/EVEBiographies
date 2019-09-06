@@ -25,11 +25,9 @@ class Mailer
     */
     protected $body;
 
-    public function __construct(Mailer_Recipient $recipient, $subject)
+    public function __construct($subject='')
     {
         $this->subject = $subject;
-
-        $this->addRecipient($recipient);
     }
 
     public function addRecipient(Mailer_Recipient $recipient)
@@ -80,7 +78,16 @@ class Mailer
 
             $mail->setFrom(APP_SMTP_FROM_EMAIL, APP_SMTP_FROM_NAME);
 
+            $addresses = array();
             foreach($this->recipients as $recipient)
+            {
+                $email = $recipient->getEmail();
+                if(!isset($addresses[$email])) {
+                    $addresses[$email] = $recipient;
+                }
+            }
+            
+            foreach($addresses as $recipient)
             {
                 $mail->addAddress($recipient->getEmail(), $recipient->getName());
             }
