@@ -17,6 +17,8 @@
     );
     
     ini_set('include_path', implode(PATH_SEPARATOR, $paths));
+
+    $adminCharacters = null;
     
     $localConfig = APP_ROOT.'/config/config-local.php';
     if(!file_exists($localConfig)) {
@@ -27,16 +29,27 @@
     }
     
     if(!function_exists('curl_init')) {
-        die('ERROR: CURL is not enabled.');
+        die('<p style="color:#cc0000"><b>ERROR:</b> The CURL extension is not enabled.</p>');
     }
     
     require_once $localConfig;
+
+    if(!isset($adminCharacters) || empty($adminCharacters)) {
+        die(
+            '<p style="color:#cc0000"><b>ERROR:</b> The admin characters list is empty.</p>'
+        );
+    }
+    
+    /**
+     * Serialized list of admin characters.
+     * @var string
+     */
+    define('APP_ADMIN_CHARACTERS', serialize($adminCharacters)); unset($adminCharacters);
     
     define('APP_GITHUB_URL', 'https://github.com/Mistralys/EVEBiographies');
-    define('APP_DOMAIN_URL', 'https://eve-biographies.org');
     define('APP_DB_PATH', APP_ROOT.'/storage/biographies.sqlite');
     define('APP_CREST_CALLBACK_URL', APP_URL.'/auth.php');
     
-    define('APP_DOMAIN', str_replace(array('https://', 'http://'), '', APP_DOMAIN_URL));
-    
     require_once 'Website.php';
+    
+    

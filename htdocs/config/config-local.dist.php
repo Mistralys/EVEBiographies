@@ -1,5 +1,9 @@
 <?php
 
+    // -----------------------------------------------------------------------------
+    // ROOT CONFIGURATION
+    // -----------------------------------------------------------------------------
+
    /**
     * The absolute URL to the biographies website, without ending slash.
     *
@@ -7,6 +11,17 @@
     */
     define('APP_URL', 'https://domain.com/biographies');
 
+    /**
+     * Whether to enable URL rewriting to be able to use pretty URLs.
+     * @var bool
+     */
+    define('APP_PRETTY_URLS', false);
+    
+
+    // -----------------------------------------------------------------------------
+    // EVE ONLINE CREST API
+    // -----------------------------------------------------------------------------
+    
    /**
     * The application client ID to connect to the EVE application.
     * @var string
@@ -21,12 +36,12 @@
     */
     define('APP_CREST_SECRET_KEY', '');
 
-   /**
-    * Whether to enable URL rewriting to be able to use pretty URLs.
-    * @var bool
-    */
-    define('APP_PRETTY_URLS', false);
 
+    
+    // -----------------------------------------------------------------------------
+    // PUBLIC EMAIL ADDRESSES
+    // -----------------------------------------------------------------------------
+    
    /**
     * The email address where legal requests should be sent
     * @var string
@@ -39,18 +54,7 @@
      */
     define('APP_EMAIL_CONTACT', 'contact@website.com');
 
-   /**
-    * Admin contact address for email notifications. Not displayed anywhere in the site.
-    * @var string
-    */
-    define('APP_EMAIL_ADMIN', 'admin@domain.com');
-
-   /**
-    * A semicolon-separated list of the names of characters that are allowed to administrate the website.
-    * @var string
-    */
-    define('APP_ADMIN_CHARACTERS', 'CharacterName1;CharacterName2');
-
+    
     // -----------------------------------------------------------------------------
     // SMTP SERVER SETUP FOR SENDING MAILS
     // -----------------------------------------------------------------------------
@@ -96,3 +100,28 @@
      * @var string
      */
     define('APP_SMTP_FROM_NAME', 'EVE Biographies');
+    
+    
+    // -----------------------------------------------------------------------------
+    // ADMINISTRATORS
+    // -----------------------------------------------------------------------------
+    
+    // To define who has admin rights, add the according entries
+    // in the following array. Admins also log in using EVE Online's
+    // SSO, and get the admin privileges by being in this list. 
+    //
+    // Note: At least one of these should have the notifications enabled.
+    // If not, they are automatically enabled for the first in the list.
+    //
+    // If notifications are enabled, these characters all get sent
+    // a copy of the website's mail notifications. Several characters
+    // can use the same email address: only one mail will be sent.
+    
+    $adminCharacters = array(
+        array(
+            'character' => 'Character Name',
+            'email' => 'contact@domain.com',
+            'notifications' => true
+        ),
+    );
+    
