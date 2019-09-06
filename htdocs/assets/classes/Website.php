@@ -188,7 +188,7 @@ class Website
         }
 
         // Has the auth info screen been shown to the user? This screen tells
-        // the user that they have to log in using EVE's SSO, before actually
+        // the user that they have to sign in using EVE's SSO, before actually
         // sending them there.
         if(!$_SESSION['auth']['info_shown'])
         {

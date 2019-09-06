@@ -130,7 +130,7 @@
     // -----------------------------------------------------------------------------
     
     // To define who has admin rights, add the according entries
-    // in the following array. Admins also log in using EVE Online's
+    // in the following array. Admins also sign in using EVE Online's
     // SSO, and get the admin privileges by being in this list. 
     //
     // Note: At least one of these should have the notifications enabled.

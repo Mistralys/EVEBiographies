@@ -57,7 +57,7 @@ class Template_Website_legal extends Skins_Skin_Template_Frontend
         	</p>
         	<p>
         		<?php 
-        		    pts('Cookie usage:'); pts('%1$s uses session cookies to allow users to log in and edit their biography text.', Website::getName());
+        		    pts('Cookie usage:'); pts('%1$s uses session cookies to allow users to sign in and edit their biography text.', Website::getName());
         		    pts('Data safety:'); pts('The database is subject to regular backups, and cannot be accessed externally.');
         		    pts('Policy changes:'); pts('Changes to this privacy policy will be announced on %1$s\'s landing page.', Website::getName());
         		?>

@@ -21,7 +21,7 @@ class Template_Website_about extends Skins_Skin_Template_Frontend
         	<h2><?php pt('How does it work?') ?></h2>
         	<p>
         		<?php
-        		    pts('Simply log in via EVE Online\'s SSO to access all available biographies.');
+        		    pts('Simply sign in via EVE Online\'s SSO to access all available biographies.');
         		    pts('To create or edit a biography, select the relevant character when you sign on:');
         		    pts('Nothing more is needed!');
         		    pts('You can start writing the biography right away.');

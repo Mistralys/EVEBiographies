@@ -32,11 +32,11 @@ class Template_Website_share extends Skins_Skin_Template_Frontend
         	<p class="login-button">
         		<a href="<?php echo $char->getReadURL() ?>" class="btn btn-primary">
         			<i class="fa fa-user-astronaut"></i>
-        			<?php pt('Log in and start reading') ?>
+        			<?php pt('Sign in and start reading') ?>
     			</a>
         	</p>
 			<p>
-				<b><?php pts('Why do I have to log in?') ?></b>
+				<b><?php pts('Why do I have to sign in?') ?></b>
 			</p>
 			<p>
 				<?php 

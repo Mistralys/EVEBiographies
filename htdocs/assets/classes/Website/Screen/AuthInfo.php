@@ -35,12 +35,12 @@ class Website_Screen_AuthInfo extends Website_Screen
     
     public function getPageTitle()
     {
-        return t('EVE Online biographies');
+        return t('Character selection');
     }
     
     public function getNavigationTitle()
     {
-        return t('About');
+        return t('Character selection');
     }
     
     public function getDispatcher()

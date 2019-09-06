@@ -52,13 +52,13 @@ class Template_Website_navigation extends Skins_Skin_Template
                        else 
                        {
                            ?>
-                              <a href="<?php echo $this->getScreenURL('Nexus') ?>" class="btn btn-secondary btn-sm nav-item">
+                              <a href="<?php echo $this->getScreenURL('Nexus') ?>" class="btn btn-secondary btn-sm nav-item" title="<?php pt('Sign in with an EVE Online character to browse biogrphies.') ?>">
                                 <i class="fa fa-sign-in-alt"></i>
-                              	<?php pt('Log in') ?>
+                              	<?php pt('Sign in') ?>
                               </a>
-                              <a href="<?php echo $this->getScreenURL('Write') ?>" class="btn btn-primary btn-sm nav-item" title="<?php pt('Log in with an EVE account to create your biography') ?>">
+                              <a href="<?php echo $this->getScreenURL('Write') ?>" class="btn btn-primary btn-sm nav-item" title="<?php pt('Sign in with an EVE Online character to write your biography') ?>">
                               	<i class="fa fa-user-astronaut"></i>
-                              	<?php pt('Create your biography') ?>
+                              	<?php pt('Write your biography') ?>
                               </a>
                            <?php 
                        }

@@ -268,7 +268,7 @@ abstract class Skins_Skin_Template
                 "href": "%3$s"
               }
             });',
-            t('Cookies are used to remember your preferences and to allow you to log in.'),
+            t('Cookies are used to remember your preferences and to allow you to sign in.'),
             t('Dismiss message'),
             $this->screen->getWebsite()->createScreen('Legal')->getURL()
         ));
