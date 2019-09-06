@@ -1,6 +1,6 @@
 {
     "name" : "EVE Biographies",
-    "description" : "Write your character's biography with no length limit. You can choose from a number of color schemes to customize the layout. The biographies are made to be pretty and easy to read, and they're free!",
+    "description" : "Write your EVE Online character's biography with no length limit. You can choose from a number of color schemes to customize the layout. The biographies are made to be pretty and easy to read, and they're free!",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories":[

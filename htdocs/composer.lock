@@ -208,12 +208,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mistralys/HTML_QuickForm2.git",
-                "reference": "8fc905e9c4aff694661c6dc3c94796d1b62b6dcd"
+                "reference": "47e5f79e53aefb62337b5c59c2179482739fe49a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/8fc905e9c4aff694661c6dc3c94796d1b62b6dcd",
-                "reference": "8fc905e9c4aff694661c6dc3c94796d1b62b6dcd",
+                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/47e5f79e53aefb62337b5c59c2179482739fe49a",
+                "reference": "47e5f79e53aefb62337b5c59c2179482739fe49a",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +259,7 @@
                 "source": "https://github.com/pear/HTML_QuickForm2",
                 "docs": "https://pear.php.net/manual/en/package.html.html-quickform2.php"
             },
-            "time": "2019-06-25T08:01:30+00:00"
+            "time": "2019-07-30T13:51:34+00:00"
         },
         {
             "name": "pear/pear_exception",
