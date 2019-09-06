@@ -6,6 +6,8 @@ require_once 'Skins/Skin.php';
 
 class Skins
 {
+    const ERROR_NO_DEFAULT_BIOGRAPHY_SKIN = 37301;
+    
     protected $path;
     
     protected $url;
@@ -38,6 +40,9 @@ class Skins
         return $this->url;
     }
     
+   /**
+    * @var Skins_Skin
+    */
     protected $skins;
     
     protected function load()
@@ -68,12 +73,33 @@ class Skins
     
     public function getByID($skinID) : Skins_Skin
     {
+        if(empty($skinID)) {
+            $skinID = $this->getDefaultBiographySkin()->getID();
+        }
+        
         $class = '\EVEBiographies\Skin_'.$skinID;
         $file = $this->getPath().'/'.$skinID.'/'.$skinID.'.php';
         
         require_once $file;
         
         return new $class($this, $this->screen, $skinID);
+    }
+    
+    public function getDefaultBiographySkin() : ?Skins_Skin
+    {
+        $this->load();
+        
+        foreach($this->skins as $skin) 
+        {
+            if($skin->isBiographySkin()) {
+                return $skin;
+            }
+        }
+        
+        throw new Website_Exception(
+            'No default biography skin found',
+            self::ERROR_NO_DEFAULT_BIOGRAPHY_SKIN
+        );
     }
     
    /**
