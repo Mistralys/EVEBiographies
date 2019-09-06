@@ -121,6 +121,8 @@ abstract class Skins_Skin_Template
     {
         $this->skin->configureTemplate($this);
      
+        $this->addCookieConsent();
+        
         $this->preRender();
         
         $html = $this->_renderBody();
@@ -242,5 +244,33 @@ abstract class Skins_Skin_Template
         $nav = new $name($this->screen);
         
         return $nav->render();
+    }
+
+    public function addCookieConsent()
+    {
+        $this->addStylesheet('https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css');
+        $this->addJavascript('https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js');
+        
+        $this->addJSOnload(sprintf(
+            'window.cookieconsent.initialise({
+              "palette": {
+                "popup": {
+                  "background": "#000"
+                },
+                "button": {
+                  "background": "#f1d600"
+                }
+              },
+              "theme": "classic",
+              "content": {
+                "message": "%1$s",
+                "dismiss": "%2$s",
+                "href": "%3$s"
+              }
+            });',
+            t('Cookies are used to remember your preferences and to allow you to log in.'),
+            t('Dismiss message'),
+            $this->screen->getWebsite()->createScreen('Legal')->getURL()
+        ));
     }
 }

@@ -1,5 +1,4 @@
 - Finish the installer
-- Add cookie disclaimer
 - Add a views counter (stats tab?)
 - Syntax to link to other biographies?
 - When the form has an error, show a message on top of the page
