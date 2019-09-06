@@ -159,7 +159,7 @@ class Template_Website_legal extends Skins_Skin_Template_Frontend
 				    pts('All other trademarks are the property of their respective owners.');
 				    pts('EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf.');
 				    pts('All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf.');
-				    pts('CCP hf. has granted permission to %1$s to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, %1$s.', APP_DOMAIN);
+				    pts('CCP hf. has granted permission to %1$s to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, %1$s.', $this->screen->getWebsite()->getName());
 				    pts('CCP hf is in no way responsible for the content on or functioning of this website, nor can it be liable for any damage arising from the use of this website.');
 			     ?>
             </p>
