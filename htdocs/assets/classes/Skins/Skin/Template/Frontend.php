@@ -30,7 +30,7 @@ abstract class Skins_Skin_Template_Frontend extends Skins_Skin_Template
                 <div class="container">
                 	<p>
                 		<?php 
-                		  pts('Brought you by %1$s.', '<a href="http://eve.aeonoftime.com">AeonOfTime</a>'); 
+                		  pts('Brought to you by %1$s.', '<a href="http://eve.aeonoftime.com">AeonOfTime</a>'); 
                 		  pts('Like this service?');
                 		  pts('Ingame ISK donations are always welcome \o/');
             		  ?>

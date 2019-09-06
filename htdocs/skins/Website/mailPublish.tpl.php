@@ -37,7 +37,7 @@ class Template_Website_mailPublish extends Skins_Skin_Template_Email
         		<b>Character:</b> <?php echo $this->character->getName() ?>
         	</p>
         	<p>
-        		<b>State:</b> <?php $this->biography->getPublishState() ?>
+        		<b>State:</b> <?php echo $this->biography->getPublishState() ?>
 	       	</p>
         	<p>
         		<b>Preview:</b>

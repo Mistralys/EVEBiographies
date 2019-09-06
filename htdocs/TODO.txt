@@ -1,9 +1,12 @@
 - Finish the installer
 - Add cookie disclaimer
-- Finish possibility to delete biography
 - Add a views counter (stats tab?)
 - Syntax to link to other biographies?
 - Add more security to the biography text - protect against xss and co
 - When the form has an error, show a message on top of the page
 - Refine the layout of the authinfo screen
 - Add form nonces for security purposes
+- Add a preview to the font selection
+- The login button should not display the authinfo page
+- Create new skin thumbnails
+- Make the skin thumbnails bigger

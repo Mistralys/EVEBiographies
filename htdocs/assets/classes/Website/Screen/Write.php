@@ -25,10 +25,14 @@ class Website_Screen_Write extends Website_Screen
         if($this->request->getBool('delete-portrait')) {
             $this->handlePortraitDelete();
         }
-
+        
         $this->initTabs();
         $this->resolveActiveTab();
 
+        if($this->activeTab === 'delete' && $this->request->getBool('confirm') === true) {
+            $this->handleBiographyDelete();
+        }
+        
         $this->createSettingsForm();
 
         if($this->form->isSubmitted() && $this->form->validate()) {
@@ -296,7 +300,7 @@ class Website_Screen_Write extends Website_Screen
             '<a href="https://www.markdownguide.org/cheat-sheet" target="_blank">',
             '</a>'
         );
-        $parts[] = t('Click the help icon in the editor toolbar to get a reference of the sytnax you may use.');
+        $parts[] = t('Click the help icon in the editor toolbar to get a reference of the syntax you may use.');
         $parts[] = t('If you want to do some ASCII art, I recommend selecting a monospace font below.');
         $parts[] = t('The standard font is made for easy reading.');
         $parts[] = '<br><br>';
@@ -510,7 +514,7 @@ class Website_Screen_Write extends Website_Screen
         $mailer->send();
     }
 
-    protected function getTabURL($tabID=null, $params=array())
+    public function getTabURL($tabID=null, $params=array())
     {
         if(empty($tabID)) {
             $tabID = $this->activeTab;
@@ -571,6 +575,42 @@ class Website_Screen_Write extends Website_Screen
         $this->redirectWithSuccessMessage(
             t('The portrait has been deleted successfully at %1$s.', date('H:i:s')),
             $this->character->getWriteURL()
+        );
+    }
+    
+    protected function handleBiographyDelete()
+    {
+        $db = $this->website->createDB();
+        
+        $this->startTransaction();
+        
+        $backup = array(
+            'biography' => $db->fetchOne('biographies', array('biography_id' => $this->biography->getID())),
+            'character' => $db->fetchOne('characters', array('character_id' => $this->character->getID()))
+        );
+        
+        $db->delete('biographies', array('biography_id' => $this->biography->getID()));
+        $db->delete('characters', array('character_id' => $this->character->getID()));
+        
+        unset($_SESSION['character_id']);
+        
+        $this->endTransaction();
+        
+        $tpl = $this->createTemplate('mailDelete');
+        $tpl->addVar('target-character', $this->character);
+        $tpl->addVar('backup-data', $backup);
+        
+        $mailer = $this->website->createAdminMailer('Bioraphy deleted: '.$this->character->getName());
+        $mailer->setHTMLBody($tpl->render());
+        $mailer->send();
+        
+        $this->redirectWithSuccessMessage(
+            t(
+                'The biography for %1$s has been deleted successfully at %2$s.',
+                $this->character->getName(),
+                date('H:i:s')
+            ), 
+            $this->website->createScreen('About')->getURL()
         );
     }
 }
