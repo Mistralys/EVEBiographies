@@ -9,3 +9,4 @@
 - Add minimalist site nav to the read pages
 - Add the portrait to the publish mail to be able to moderate this as well
 - Add a high contrast skin
+- Tweak & improve the skin layouts
