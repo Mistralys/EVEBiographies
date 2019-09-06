@@ -131,18 +131,14 @@ class Characters_Character extends DB_Item
         return $this;
     }
 
-    private $adminNames;
+    private $isAdmin;
 
     public function isAdmin()
     {
-        $name = $this->getName();
-
-        if(!isset($this->adminNames))
-        {
-            $this->adminNames = explode(';', APP_ADMIN_CHARACTERS);
-            $this->adminNames = array_map('trim', $this->adminNames);
+        if(!isset($this->isAdmin)) {
+            $this->isAdmin = in_array($this->getName(), Website::getAdminNames());
         }
-
-        return in_array($name, $this->adminNames);
+        
+        return $this->isAdmin;
     }
 }

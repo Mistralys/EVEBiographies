@@ -4,14 +4,17 @@ namespace EVEBiographies;
 
 require_once 'Utils.php';
 require_once 'DB.php';
-require_once 'Website/Exception.php';
-require_once 'Website/Screen.php';
 require_once 'Request.php';
 require_once 'Mailer.php';
+require_once 'Website/Exception.php';
+require_once 'Website/Screen.php';
+require_once 'Website/AdminCharacter.php';
 
 class Website
 {
     const ERROR_INVALID_LOGGING_MODE = 37201;
+    
+    const ERROR_ADMIN_CHARACTERS_EMPTY = 37202;
     
    /**
     * @var Biographies
@@ -55,6 +58,7 @@ class Website
         //$_SESSION = array();
         
         self::initLogging();
+        self::initAdmins();
         
         self::log('');
         self::log('Starting request [#'.APP_REQUEST_ID.'] | Session ID ['.session_id().'] | Date ['.date('Y-m-d').']');
@@ -202,7 +206,7 @@ class Website
     {
         return isset($_SESSION['character_id']);
     }
-
+    
     protected function start(Website_Screen $screen)
     {
         $this->screen = $screen;
@@ -213,7 +217,7 @@ class Website
 
         $this->screen->start($this);
     }
-
+    
     public function display()
     {
         echo $this->render();
@@ -355,19 +359,88 @@ class Website
         return t('EVE Biographies');
     }
 
+    public static function getAdmins()
+    {
+        return self::$admins;
+    }
+    
+   /**
+    * @var Website_AdminCharacter[]
+    */
+    protected static $admins;
+    
+    protected static function initAdmins()
+    {
+        $data = unserialize(APP_ADMIN_CHARACTERS);
+        
+        self::$admins = array();
+        
+        $hasNotification = false;
+        
+        foreach($data as $entry) 
+        {
+            if(!isset($entry['character']) || !isset($entry['email']) || !isset($entry['notifications'])) {
+                self::log('Invalid entry in the administrators list, one of the required keys is missing in the array.');
+                continue;
+            }
+            
+            $admin = new Website_AdminCharacter(
+                $entry['character'], 
+                $entry['email'], 
+                $entry['notifications']
+            );
+            
+            self::$admins[] = $admin;
+            
+            if($admin->hasNotifications()) {
+                $hasNotification = true;
+            }
+        }
+        
+        if(empty(self::$admins)) {
+            throw new Website_Exception(
+                'No valid admin characters found, check your configuration. Enable logging to debug if needed.', 
+                self::ERROR_ADMIN_CHARACTERS_EMPTY
+            );
+        }
+        
+        if(!$hasNotification) {
+            self::$admins[0]->enableNotification();
+        }
+    }
+    
     public function createLegalMailer($subject)
     {
-        return $this->createMailer(APP_EMAIL_LEGAL, 'Administrator', $this->getName().' - '.$subject);
+        $mailer = $this->createMailer($subject);
+        
+        $recipient = $mailer->createRecipient(APP_EMAIL_LEGAL, 'Legal');
+        $mailer->addRecipient($recipient);
+        
+        return $mailer;
     }
     
     public function createAdminMailer($subject)
     {
-        return $this->createMailer(APP_EMAIL_ADMIN, 'Administrator', $this->getName().' - '.$subject);
+        $mailer = $this->createMailer($subject);
+        
+        $admins = $this->getAdmins();
+        
+        foreach($admins as $admin) 
+        {
+            if(!$admin->hasNotifications()) {
+                continue;
+            }
+            
+            $recipient = $mailer->createRecipient($admin->getEmail(), $admin->getName()); 
+            $mailer->addRecipient($recipient);
+        }
+        
+        return $mailer;
     }
-
-    public function createMailer($email, $name, $subject)
+    
+    public function createMailer($subject)
     {
-        return new Mailer(Mailer::createRecipient($email, $name), $subject);
+        return new Mailer($subject);
     }
     
     public static function log($message)
@@ -383,5 +456,16 @@ class Website
         );
         
         self::$logger->debug($line);
+    }
+    
+    public static function getAdminNames()
+    {
+        $result = array();
+        
+        foreach(self::$admins as $admin) {
+            $result[] = $admin->getName();
+        }
+        
+        return $result;
     }
 }
