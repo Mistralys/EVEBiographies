@@ -114,12 +114,14 @@ class Website
         return $screen;
     }
 
-    public static function bootAndDisplay($screenID)
+    public static function bootAndDisplay($screenID) : ?Website
     {
         $website = self::boot($screenID);
         if($website) {
             $website->display($screenID);
         }
+        
+        return $website;
     }
 
     public function getScreen() : Website_Screen

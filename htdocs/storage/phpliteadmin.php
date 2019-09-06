@@ -43,8 +43,6 @@
 //
 // Please see https://bitbucket.org/phpliteadmin/public/wiki/Configuration for more details
 
-$authClass = 'Authorization';
-
 //password to gain access
 $password = 'admin';
 
@@ -857,12 +855,8 @@ if ($auth->isAuthorized())
 					$j++;
 				}
 			}
-			
 			// 22 August 2011: gkf fixed bug #50.
 			sort($databases);
-			
-			$currentDB = $databases[0];
-			
 			if(isset($tdata))
 			{
 				foreach($databases as $db_id => $database)
