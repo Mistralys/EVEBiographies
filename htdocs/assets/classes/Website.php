@@ -2,6 +2,7 @@
 
 namespace EVEBiographies;
 
+require_once 'Utils.php';
 require_once 'DB.php';
 require_once 'Website/Exception.php';
 require_once 'Website/Screen.php';
@@ -321,9 +322,14 @@ class Website
         return t('EVE Biographies');
     }
 
+    public function createLegalMailer($subject)
+    {
+        return $this->createMailer(APP_EMAIL_LEGAL, 'Administrator', $this->getName().' - '.$subject);
+    }
+    
     public function createAdminMailer($subject)
     {
-        return $this->createMailer(APP_EMAIL_ADMIN, 'Administrator', $subject);
+        return $this->createMailer(APP_EMAIL_ADMIN, 'Administrator', $this->getName().' - '.$subject);
     }
 
     public function createMailer($email, $name, $subject)

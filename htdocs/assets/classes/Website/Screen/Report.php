@@ -9,7 +9,7 @@ class Website_Screen_Report extends Website_Screen
    /**
     * @var Characters_Character
     */
-    protected $character;
+    protected $targetCharacter;
     
     protected function _start()
     {
@@ -24,9 +24,9 @@ class Website_Screen_Report extends Website_Screen
             $this->redirect($this->getScreenURL('About'));
         }
         
-        $this->character = $chars->getBySlug($slug);
+        $this->targetCharacter = $chars->getBySlug($slug);
         
-        if($this->website->getCharacter() === $this->character) {
+        if($this->character === $this->targetCharacter) {
             $this->redirectWithInfoMessage(
                 '<b>'.t('Woah, hey, reporting your own biography?').'</b> '.
                 t('We will assume it was a misclick, and leave it at that.'), 
@@ -40,18 +40,23 @@ class Website_Screen_Report extends Website_Screen
         {
             $values = $this->form->getValues();
             
-            $data = array(
-                $values['type'],
-                $values['comments'],
-                $values['contact_mail']
-            );
+            $tpl = $this->createTemplate('mailReport');
+            $tpl->addVars(array(
+                'target-character' => $this->targetCharacter,
+                'type' => $values['type'],
+                'comments' => $values['comments'],
+                'email' => $values['contact_mail']
+            ));
             
-            $mail = new Mailer();
-            $mail->setRecipient(APP_EMAIL_LEGAL);
-            $mail->setSubject('EVE Biographies: Report');
+            $mail = $this->website->createLegalMailer(t('Biography reported:').' '.$this->targetCharacter->getName());
+            $mail->setHTMLBody($tpl->render());
+            $mail->send();
             
             $this->redirectWithSuccessMessage(
-                t('Thank you for taking the time to report %1$s\'s biography, we will investigate shortly.', $this->character->getName()), 
+                t(
+                    'Thank you for taking the time to report %1$s\'s biography, we will investigate shortly.', 
+                    $this->targetCharacter->getName()
+                ), 
                 $this->getScreenURL('Nexus')
             );
         }
@@ -59,7 +64,7 @@ class Website_Screen_Report extends Website_Screen
     
     public function requiresAuthentication()
     {
-        return false;
+        return true;
     }
     
     protected function getSkinID()
@@ -89,11 +94,10 @@ class Website_Screen_Report extends Website_Screen
     
     protected function _render()
     {
-        
-        
         $tpl = $this->skin->createTemplate('report');
-        $tpl->addVar('character', $this->character);
+        $tpl->addVar('target-character', $this->targetCharacter);
         $tpl->addVar('form', $this->form);
+        
         return $tpl->render();
     }
     
@@ -110,7 +114,7 @@ class Website_Screen_Report extends Website_Screen
     {
         $form = $this->createForm();
         
-        $form->addHidden('char', array('value' => $this->character->getSlug()));
+        $form->addHidden('char', array('value' => $this->targetCharacter->getSlug()));
         
         /* @var $type \HTML_QuickForm2_Element_Select */
         
@@ -123,29 +127,27 @@ class Website_Screen_Report extends Website_Screen
         $type->addOption(t('Personal or confidential information'), 'confidential');
         $type->addOption(t('Impersonation, deception'), 'impersonation');
         $type->addOption(t('SPAM, advertisements'), 'spam');
-        $type->addOption(t('Other'), 'other');
+        $type->addOption(t('Other - please specify in the comments'), 'other');
         $type->addRule('required', t('Please select a type of issue.'));
         
         $email = $form->addElement('text', 'contact_mail');
-        $email->setLabel(t('Your contact address'));
+        $email->setLabel(t('Your contact email'));
         $email->addFilter('trim');
         $email->addRule('regex', t('Please enter a valid email address.'), self::REGEX_EMAIL);
-        $email->setComment(
-            t('Optional:').' '.
-            t('if you provide your email address, we will only contact you if we need more information.').' '.
-            t('We will not inform you of any measures we may take, if any.')
-        );
+        $email->setComment(t('We will only contact you if we need more information.'));
+        $email->addRule('required', t('Please enter an email address.'));
         
         $comments = $form->addElement('textarea', 'comments');
         $comments->setLabel(t('Comments'));
         $comments->setComment(
-            t('Please describe why you think %1$s\'s biography needs to be reported.', $this->character->getName()).' '.
+            t('Please describe why you think %1$s\'s biography needs to be reported.', $this->targetCharacter->getName()).' '.
             t('Between %1$s and %2$s characters are allowed.', $this->minCommentsLength, $this->maxCommentsLength)
         );
         $comments->addFilter('trim');
-        $comments->setAttribute('rows', 20);
-        $comments->addRule('callback', t('Please enter a minimum of %1$s characters.', $this->minCommentsLength), array($this, 'callback_minComments'));
-        $comments->addRule('callback', t('Please enter a maximum of %1$s characters.', $this->maxCommentsLength), array($this, 'callback_maxComments'));
+        $comments->setAttribute('rows', 14);
+        $comments->addRuleCallback(t('Please enter a minimum of %1$s characters.', $this->minCommentsLength), array($this, 'callback_minComments'));
+        $comments->addRuleCallback(t('Please enter a maximum of %1$s characters.', $this->maxCommentsLength), array($this, 'callback_maxComments'));
+        $comments->addRuleCallback(t('May not contain HTML markup.'), array($this, 'validate_comments'));
         $comments->addRule('required', t('Please enter a comment.'));
         
         $btn = $form->addButton('send_report');
@@ -157,6 +159,11 @@ class Website_Screen_Report extends Website_Screen
         );
         
         $this->form = $form;
+    }
+    
+    public function validate_comments($comments)
+    {
+        return !Utils::isStringHTML($comments);
     }
     
     public function callback_minComments($value)

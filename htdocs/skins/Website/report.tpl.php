@@ -9,23 +9,17 @@ class Template_Website_report extends Skins_Skin_Template_Frontend
    /**
     * @var Characters_Character
     */
-    protected $character;
+    protected $targetCharacter;
     
     protected function _renderContent()
     {
-        $this->character = $this->getVar('character');
+        $this->targetCharacter = $this->getVar('target-character');
         
         ob_start();
         
         ?>
             <p>
-            	<?php pts('Please describe the issue with %1$s\'s biography.', '<b>'.$this->character->getName().'</b>') ?> 
-            </p>
-            <p>
-            	<?php 
-            	   pts('Note:');
-            	   pts('We may contact your for more details if needed.')
-        	   ?>
+            	<?php pts('Please describe the issue with %1$s\'s biography.', '<b>'.$this->targetCharacter->getName().'</b>') ?> 
             </p>
         <?php 
         echo $this->renderForm($this->getVar('form'));
