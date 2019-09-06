@@ -52,7 +52,7 @@ class Template_Website_navigation extends Skins_Skin_Template
                        else 
                        {
                            ?>
-                              <a href="<?php echo $this->getScreenURL('Nexus') ?>" class="btn btn-secondary btn-sm nav-item" title="<?php pt('Sign in with an EVE Online character to browse biogrphies.') ?>">
+                              <a href="<?php echo $this->getScreenURL('Nexus', array('authinfo' => 'no')) ?>" class="btn btn-secondary btn-sm nav-item" title="<?php pt('Sign in with an EVE Online character to browse biogrphies.') ?>">
                                 <i class="fa fa-sign-in-alt"></i>
                               	<?php pt('Sign in') ?>
                               </a>

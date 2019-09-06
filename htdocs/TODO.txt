@@ -5,6 +5,5 @@
 - Refine the layout of the authinfo screen
 - Add form nonces for security purposes
 - Add a preview to the font selection
-- The login button should not display the authinfo page
 - Create new skin thumbnails
 - Make the skin thumbnails bigger

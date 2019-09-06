@@ -190,7 +190,7 @@ class Website
         // Has the auth info screen been shown to the user? This screen tells
         // the user that they have to sign in using EVE's SSO, before actually
         // sending them there.
-        if(!$_SESSION['auth']['info_shown'])
+        if(!$_SESSION['auth']['info_shown'] && $this->request->getBool('authinfo') !== false)
         {
             $this->log('Login info not shown, redirect to auth info screen.');
             
