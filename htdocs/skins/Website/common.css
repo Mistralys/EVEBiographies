@@ -65,7 +65,7 @@ margin-right:8px;
 }
 
 .navbar.fixed-top{
-height:60px;
+min-height:60px;
 }
 
 .monospace{
