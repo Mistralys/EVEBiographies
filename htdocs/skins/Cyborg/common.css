@@ -15,6 +15,7 @@ text-shadow:0px 1px 1px rgba(0, 0, 0, 0.15);
 
 .logo{
 float:right;
+margin-left:13px;
 }
 
 .logo IMG{
@@ -28,6 +29,7 @@ margin:0 auto;
 padding:40px;
 box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
 border-radius:6px;
+min-width:320px;
 }
 
 .cover-portrait{
@@ -91,6 +93,13 @@ margin-bottom:6px;
 FOOTER .inner > P:last-child{
 margin-bottom:0;
 }
+
+@media screen and (max-width: 400px) {
+	.cover-container {
+		padding:13px;
+	}
+}
+
 
 /* SMALLSCREEN ----------------------------------------------------------------------- */
 @media screen and (max-width: 500px) {
