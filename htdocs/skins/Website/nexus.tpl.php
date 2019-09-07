@@ -16,6 +16,11 @@ class Template_Website_nexus extends Skins_Skin_Template_Frontend
         $this->addStylesheet('nexus.css');
         
         $this->bios = $this->getVar('biographies');
+        $startEntry = $this->getVar('start');
+        $endEntry = $this->getVar('end');
+        $total = $this->getVar('total');
+        $next = $this->getVar('url-next');
+        $prev = $this->getVar('url-prev');
         
         ob_start();
         
@@ -51,6 +56,31 @@ class Template_Website_nexus extends Skins_Skin_Template_Frontend
             		}   
         		?>
         	</ul>
+        	<br>
+        	<p>
+        		<?php
+        		    $prevDisabled = '';
+        		    if(!$prev) {
+        		        $prevDisabled = ' disabled';
+        		    }
+        		    
+        		    $nextDisabled = '';
+        		    if(!$next) {
+        		        $nextDisabled = ' disabled';
+        		    }
+    		    ?>
+				<a href="<?php echo $prev ?>" class="btn btn-secondary btn-sm<?php echo $prevDisabled ?>">
+        			<i class="fa fa-arrow-circle-left"></i>
+        			<?php pt('Previous') ?>
+    			</a>
+        		<a href="<?php echo $next ?>" class="btn btn-secondary btn-sm<?php echo $nextDisabled ?>">
+        			<?php pt('Next') ?>
+        			<i class="fa fa-arrow-circle-right"></i>
+    			</a>
+        	</p>
+        	<p>
+        		<?php pts(sprintf('Showing biographies %s to %s.', $startEntry, $endEntry)); pts('Total biographies:'); echo $total ?>
+        	</p>
         <?php 
         
 		return ob_get_clean();

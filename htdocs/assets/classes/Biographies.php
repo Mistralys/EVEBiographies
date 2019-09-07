@@ -30,22 +30,61 @@ class Biographies extends DB_Collection
     * Retrieves all published biographies
     * @return \EVEBiographies\Biographies_Biography[]
     */
-    public function getPublished()
+    public function getPublished($offset, $perPage)
     {
-        $ids = $this->db->fetchAllKey(
-            $this->getTableName(),
-            'biography_id',
-            array(
-                'published' => '1'
-            )
+        $query = sprintf(
+            "SELECT
+                COUNT(char.name) AS amount
+            FROM
+                characters AS char
+            LEFT JOIN
+                biographies AS bio
+            ON
+                char.biography_id = bio.biography_id
+            WHERE
+                bio.published = 1
+            AND
+                char.blocked = 0",
+            $offset, $perPage
         );
         
-        $result = array();
+        $entry = $this->db->fetchOneQuery($query);
+
+        $total = $entry['amount'];
         
-        foreach($ids as $id) {
-            $result[] = $this->getByID($id);
+        $query = sprintf(
+            "SELECT
+                char.name,
+                bio.biography_id
+            FROM
+                characters AS char
+            LEFT JOIN
+                biographies AS bio
+            ON
+                char.biography_id = bio.biography_id
+            WHERE
+                bio.published = 1
+            AND
+                char.blocked = 0 
+            ORDER BY
+                char.name ASC
+            LIMIT 
+                %s,%s",
+            $offset, $perPage
+        );
+        
+        $entries = $this->db->fetchAllQuery(
+            $query
+        );
+        
+        $bios = array();
+        foreach($entries as $entry) {
+            $bios[] = $this->getByID($entry['biography_id']);
         }
         
-        return $result;
+        return array(
+            'total' => $total,
+            'items' => $bios
+        );
     }
 }

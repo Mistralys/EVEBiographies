@@ -151,6 +151,20 @@ class DB
         return $stmt->fetch();
     }
 
+    public function fetchOneQuery($query, $vars=array())
+    {
+        $query = sprintf(
+            $query,
+            $vars
+        );
+        
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute($vars);
+        
+        return $stmt->fetch();
+    }
+    
     protected function compileWhere(array $where=array())
     {
         if(empty($where)) {
@@ -222,6 +236,15 @@ class DB
         $stmt = $this->pdo->prepare($query);
         
         $stmt->execute($where);
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function fetchAllQuery($query, $vars=array())
+    {
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute($vars);
         
         return $stmt->fetchAll();
     }
