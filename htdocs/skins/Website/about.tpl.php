@@ -29,12 +29,13 @@ class Template_Website_about extends Skins_Skin_Template_Frontend
         	</p>
         	<h2><?php pt('Features') ?></h2>
         	<ul>
-        		<li><?php pts('Customizing:'); pt('Several color schemes available (dark and light)') ?></li>
-        		<li><?php pts('Customizing:'); pt('Lots of background images to choose from') ?></li>
-        		<li><?php pts('Customizing:'); pt('Choose a font for the text') ?></li>
-        		<li><?php pts('Customizing:'); pt('Optionally upload your character\'s portrait') ?></li>
-        		<li><?php pts('Editing:'); pt('Full text editor for markdown syntax') ?></li>
-        		<li><?php pts('Editing:'); pt('Fullscreen text editing') ?></li>
+        		<li><?php pt('Choose among several skins for your biography') ?></li>
+        		<li><?php pt('Lots of background images to choose from') ?></li>
+        		<li><?php pt('Customize the font for the text') ?></li>
+        		<li><?php pt('Upload your character\'s portrait') ?></li>
+        		<li><?php pt('Full text editor for markdown syntax') ?></li>
+        		<li><?php pt('Dialogues are automatically restyled') ?></li>
+        		<li><?php pt('Browse and read other character\'s biographies') ?></li>
         	</ul>
         	<h2><?php pt('Start now!') ?></h2>
         	<p>
