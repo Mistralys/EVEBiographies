@@ -20,4 +20,9 @@ class Skin_Alabaster extends Skins_Skin_Source_Custom
     {
         return false;
     }
+    
+    public function isDark() : bool
+    {
+        return false;
+    }
 }

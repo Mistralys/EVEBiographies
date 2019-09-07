@@ -1,0 +1,5 @@
+label="Watercolor Dyed Paper"
+credit="dierat@deviantart"
+link="https://www.deviantart.com/dierat/art/Paper-Pack-3-182473365"
+license="Creative Commons Attribution 3.0 License"
+blend="hard-light"

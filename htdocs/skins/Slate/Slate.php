@@ -30,6 +30,11 @@ class Skin_Slate extends Skins_Skin_Source_Bootswatch
     {
         return 'aaa';
     }
+
+    public function getHeadersColor()
+    {
+        return 'c0c0c0';
+    }
     
     public function getBodyBackground()
     {
@@ -39,5 +44,15 @@ class Skin_Slate extends Skins_Skin_Source_Bootswatch
     public function getDialogueColor()
     {
         return 'bbb';
+    }
+
+    public function getLinkColor()
+    {
+        return 'fff';
+    }
+    
+    public function isDark() : bool
+    {
+        return true;
     }
 }

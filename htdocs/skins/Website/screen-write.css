@@ -37,8 +37,12 @@ margin-top:13px;
 .thumbs .thumb{
 display:inline-block;
 width:130px;
-height:69px;
+height:100px;
 background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-color:#131313;
+border-radius:4px;
 margin:0 5px 5px 0;
 cursor:pointer;
 border:solid 1px #000;

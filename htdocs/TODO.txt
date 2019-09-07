@@ -5,8 +5,8 @@
 - Refine the layout of the authinfo screen
 - Add form nonces for security purposes
 - Add a preview to the font selection
-- Biographies views counter: avoid exploits
+- Biographies views counter: avoid exploits and cheating
 - Add minimalist site nav to the read pages
 - Add the portrait to the publish mail to be able to moderate this as well
 - Add a high contrast skin
-- Tweak & improve the skin layouts
+- Add "Partly read" & "Read" stati to keep track of reading progress?

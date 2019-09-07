@@ -4,21 +4,21 @@ namespace EVEBiographies;
 
 require_once 'Skins/Skin/Source/Bootswatch.php';
 
-class Skin_Solar extends Skins_Skin_Source_Bootswatch
+class Skin_Swamp extends Skins_Skin_Source_Bootswatch
 {
     public function getLabel() : string
     {
-        return 'Solar';
+        return 'Swamp';
     }
     
-    public function getLayoutTypeID() : string 
+    public function getLayoutTypeID() : string
     {
         return self::LAYOUT_TYPE_DARK;
     }
 
     public function getCanvasBackground()
     {
-        return '27, 65, 95';
+        return '71, 95, 27';
     }
     
     public function getCanvasOpacity()
@@ -28,31 +28,31 @@ class Skin_Solar extends Skins_Skin_Source_Bootswatch
     
     public function getTextColor()
     {
-        return 'a2b1c1';
+        return 'b5cc89';
     }
 
     public function getHeadersColor()
     {
-        return '8ab6d0';
+        return 'b8d77f';
     }
     
     public function getBodyBackground()
     {
-        return '002B36';
+        return '213004';
     }
     
     public function getDialogueColor()
     {
-        return 'a9ccd6';
+        return 'd6efa7';
     }
-
+    
     public function getLinkColor()
     {
-        return '58b1d7';
+        return 'c1ff4c';
     }
     
     public function isDark() : bool
     {
-        return false;
+        return true;
     }
 }

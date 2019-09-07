@@ -19,12 +19,24 @@ abstract class Skins_Skin_Template_Read_Bootswatch extends Skins_Skin_Template_R
                 'background:rgba(%s, %s)',
                 $this->skin->getCanvasBackground(),
                 $this->skin->getCanvasOpacity()
-                )
-            );
+            )
+        );
 
         $this->addCSS('BODY', sprintf('color:#%s', $this->skin->getTextColor()));
         $this->addCSS('BODY', sprintf('background-color:#%s', $this->skin->getBodyBackground()));
         $this->addCSS('.bio-body EM', sprintf('color:#%s', $this->skin->getDialogueColor()));
+        $this->addCSS('A:link,A:visited', sprintf('color:#%s', $this->skin->getLinkColor()));
+        $this->addCSS('FOOTER', sprintf('border-top-color:rgba(%s)', $this->resolveBorderColor()));
+        $this->addCSS('H1,H2,H3,H4,H5,H6', sprintf('color:#%s', $this->skin->getHeadersColor()));
+    }
+    
+    protected function resolveBorderColor()
+    {
+        if($this->skin->isDark()) {
+            return '255,255,255,0.1';
+        }
+        
+        return '0,0,0,0.1';
     }
 
     protected function _renderContent()
@@ -37,7 +49,7 @@ abstract class Skins_Skin_Template_Read_Bootswatch extends Skins_Skin_Template_R
             <div class="cover-container">
               <main role="main">
               	<div class="bio-name">
-                  	<?php
+                    <?php
                   	    if($this->character->hasPortrait()) {
                             ?><img class="cover-portrait" src="<?php echo $this->character->getPortraitURL() ?>" alt="<?php echo $charName ?>"><?php
                   	    }

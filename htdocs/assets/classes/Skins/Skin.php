@@ -47,6 +47,8 @@ abstract class Skins_Skin
     
     abstract public function supportsBackground() : bool;
     
+    abstract public function isDark() : bool;
+    
     public function getID() : string
     {
         return $this->id;
@@ -186,5 +188,28 @@ abstract class Skins_Skin
     public function getIncludes()
     {
         return $this->includes;
+    }
+
+    public function renderCSS()
+    {
+        if(empty($this->css)) {
+            return '';
+        }
+        
+        $result = 
+        PHP_EOL.
+        '<style>'.PHP_EOL;
+        
+            foreach($this->css as $selector => $statements) {
+                 $result .= $selector.PHP_EOL.
+                 '{'.PHP_EOL.
+                    implode(';'.PHP_EOL, $statements).';'.PHP_EOL.
+                 '}'.PHP_EOL;
+            }
+            
+            $result .=
+        '</style>'.PHP_EOL;
+        
+        return $result;
     }
 }

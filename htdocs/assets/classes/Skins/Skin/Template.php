@@ -178,19 +178,7 @@ abstract class Skins_Skin_Template
                    	<?php 
                 }
                 
-                $css = $this->skin->getCSS();
-                if(!empty($css)) 
-                {
-                    ?>
-                    	<style>
-                   		    <?php 
-                   		         foreach($css as $selector => $statements) {
-                   		             echo $selector.'{'.implode(';', $statements).';}';
-                   		         }
-                   		    ?>
-                   		</style>
-                    <?php 
-                }
+                echo $this->skin->renderCSS();
             ?>
           </body>
         </html><?php 

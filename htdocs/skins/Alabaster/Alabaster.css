@@ -59,7 +59,8 @@ margin-bottom:1.5rem;
 }
 
 .bio-body EM{
-color:#cecac8;
+font-style:italic;
+color:#49423e;
 }
 
 .bio-body H1{

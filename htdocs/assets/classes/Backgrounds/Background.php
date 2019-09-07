@@ -70,6 +70,22 @@ class Backgrounds_Background
         return $this->path;
     }
     
+    public function getBlendMode() : ?string
+    {
+        $this->load();
+        
+        if(isset($this->info['blend'])) {
+            return $this->info['blend'];
+        }
+        
+        return null;
+    }
+    
+    public function hasBlendMode()
+    {
+        return $this->getBlendMode() !== null;
+    }
+    
     protected function load()
     {
         if(isset($this->info)) {
@@ -97,7 +113,7 @@ class Backgrounds_Background
         }
     }
     
-    protected $thumbnailWidth = 130;
+    protected $thumbnailWidth = 420;
     
     protected function createThumbnail()
     {
@@ -108,6 +124,7 @@ class Backgrounds_Background
         require_once 'ImageHelper.php';
         
         $img = new \ImageHelper($this->getPath());
+        $img->setQuality(98);
         $img->resampleByWidth($this->thumbnailWidth);
         $img->save($this->getThumbnailPath());
     }

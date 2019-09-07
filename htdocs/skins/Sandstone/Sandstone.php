@@ -31,13 +31,28 @@ class Skin_Sandstone extends Skins_Skin_Source_Bootswatch
         return '583e23';
     }
     
+    public function getHeadersColor()
+    {
+        return '6e4f2f';
+    }
+    
     public function getBodyBackground()
     {
-        return '1f0f06';
+        return '866c50';
     }
     
     public function getDialogueColor()
     {
         return '42230d';
+    }
+    
+    public function getLinkColor()
+    {
+        return 'c85800';
+    }
+    
+    public function isDark() : bool
+    {
+        return false;
     }
 }

@@ -49,6 +49,18 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
 
     protected function _renderBody()
     {
+        $this->addStylesheet($this->font->getURL());
+        $this->addCSS('BODY', sprintf('font-family:%s, %s', $this->font->getFontFamily(), $this->font->getFallbackFamily()));
+        $this->addCSS('BODY', sprintf('font-weight:%s', $this->font->getWeight()));
+        
+        if($this->background)
+        {
+            $this->addCSS('BODY', sprintf("background-image:url('%s')", $this->background->getURL()));
+            if($this->background->hasBlendMode()) {
+                $this->addCSS('BODY', sprintf('background-blend-mode:%s', $this->background->getBlendMode()));
+            }
+        }
+        
         $html = $this->_initCSS();
 
         if(!$this->biography->isValid())
@@ -60,24 +72,6 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
             $html = $this->_renderContent();
         }
 
-        $this->addStylesheet($this->font->getURL());
-
-        ob_start();
-        ?>
-        	<style>
-                BODY{
-                	font-family:'<?php echo $this->font->getFontFamily() ?>', <?php echo $this->font->getFallbackFamily() ?>;
-                    font-weight:<?php echo $this->font->getWeight() ?>;
-                	<?php if($this->background) { ?>background-image:url(<?php echo $this->background->getURL() ?>);<?php } ?>
-                }
-                .bio-body{
-                    font-size:<?php echo $this->font->getDefaultSize() ?>rem;
-            	}
-            </style>
-        <?php
-
-        $html .= ob_get_clean();
-
         return $html;
     }
 
@@ -87,28 +81,27 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
 
         ?>
             <p>
-            	<span style="float:right">
-                	<?php pts('Logged in as %1$s.', $user->getName()) ?>
-                	<?php
-                	    if($user === $this->character)
-                	    {
-                	        ?>
-                	        	<a href="<?php echo $this->getScreenURL('Write') ?>"><?php pt('Edit your biography') ?> &raquo;</a>
-                	        <?php
-                	    }
-                	    else
-                	    {
-                	        ?>
-                	        	<?php pts('Write your own biography!') ?>
-                	        	<a href="<?php echo $this->getScreenURL('Write') ?>"><?php pt('Start now') ?> &raquo;</a>
-                	        <?php
-                	    }
-                	?>
-            	</span>
-            	<?php pt('Want to read more?') ?> <a href="<?php echo $this->getScreenURL('Nexus') ?>"><?php pt('Browse all biographies') ?> &raquo;</a>
-            	|
-	           	<a href="<?php echo $this->getScreenURL('About') ?>"><?php pt('About this service') ?></a>
-    		</p>
+            	<?php pts('Logged in as %1$s.', $user->getName()) ?>
+            	<?php
+            	    if($user === $this->character)
+            	    {
+            	        ?>
+            	        	<a href="<?php echo $this->getScreenURL('Write') ?>"><?php pt('Edit your biography') ?> &raquo;</a>
+            	        <?php
+            	    }
+            	    else
+            	    {
+            	        ?>
+            	        	<?php pts('Write your own biography!') ?>
+            	        	<a href="<?php echo $this->getScreenURL('Write') ?>"><?php pt('Start now') ?> &raquo;</a>
+            	        <?php
+            	    }
+            	?>
+        	</p>
+        	<p>
+        		<?php pt('Want to read more?') ?> <a href="<?php echo $this->getScreenURL('Nexus') ?>"><?php pt('Browse all biographies') ?> &raquo;</a>
+        	</p>
+        	<br>
         	<p>
         		<?php
         		    if($this->background) {

@@ -19,6 +19,11 @@ class Skin_Website extends Skins_Skin
         return false;
     }
     
+    public function isDark() : bool
+    {
+        return true;
+    }
+    
     public function getLayoutTypeID() : string
     {
         return self::LAYOUT_TYPE_DARK;

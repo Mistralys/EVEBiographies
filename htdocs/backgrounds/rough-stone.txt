@@ -1,0 +1,4 @@
+label="Rough Stone"
+credit="sirius-sdz@deviantart"
+link="https://www.deviantart.com/sirius-sdz/art/Texture-Pack-18-338428339"
+license="Free"

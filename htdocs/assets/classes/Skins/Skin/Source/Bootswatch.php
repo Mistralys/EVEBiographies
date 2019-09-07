@@ -11,11 +11,13 @@ abstract class Skins_Skin_Source_Bootswatch extends Skins_Skin
     
     public function configureTemplate(Skins_Skin_Template $tpl)
     {
-        $tpl->addStylesheet('bootstrap.min.css');
+        // we use Cyborg's CSS files as the main files. 
+        // The other bootswatch skins only have color changes,
+        // which are defined in the skin classes.
+        $masterURL = $this->skins->getURL().'/Cyborg';
         
-        // we use Cyborg's CSS file as the main file. The other bootswatch
-        // skins only have color changes.
-        $tpl->addStylesheet($this->skins->getURL().'/Cyborg/common.css');
+        $tpl->addStylesheet($masterURL.'/bootstrap.min.css');
+        $tpl->addStylesheet($masterURL.'/common.css');
         
         $tpl->addJavascript('https://code.jquery.com/jquery-3.3.1.slim.min.js', 'sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo');
         $tpl->addJavascript('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', 'sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49');
@@ -33,7 +35,11 @@ abstract class Skins_Skin_Source_Bootswatch extends Skins_Skin
     
     abstract public function getTextColor();
     
+    abstract public function getHeadersColor();
+    
     abstract public function getBodyBackground();
     
     abstract public function getDialogueColor();
+    
+    abstract public function getLinkColor();
 }

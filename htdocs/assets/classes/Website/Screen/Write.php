@@ -210,8 +210,10 @@ class Website_Screen_Write extends Website_Screen
             $skinEl = $form->addSelect('skin');
             $skinEl->setLabel(t('Skin'));
             $skinEl->setComment(
-                t('Which skin to use for the biography.').' '.
-                t('You can also click a preview below:')
+                t('The skin to use for the biography.').' '.
+                t('Select from the dropdown, or click a thumbnail below.').' '.
+                t('Note:').' '.
+                t('Some skins do not support background images.')
             );
 
             $skins = $this->website->createSkins()->getAll();
@@ -228,8 +230,13 @@ class Website_Screen_Write extends Website_Screen
             $backEl->setLabel(t('Background'));
             $backEl->addOption(t('No background'), 'None');
             $backEl->setComment(
-                t('Which background image to use for the biography.').' '.
-                t('You can also click a thumbnail below:')
+                t('The background image to use for the biography.').' '.
+                t('Select from the dropown, or click a thumbnail below.').' '.
+                t('Note:').' '.
+                t(
+                    'Backgrounds marked %1$s are textures that adjust to the color scheme of the skin.', 
+                    '<b>Blended</b>'
+                )
             );
 
             $backgrounds = $this->website->createBackgrounds()->getAll();

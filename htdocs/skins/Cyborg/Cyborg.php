@@ -30,6 +30,11 @@ class Skin_Cyborg extends Skins_Skin_Source_Bootswatch
     {
         return '9a9898';
     }
+
+    public function getHeadersColor()
+    {
+        return '99a8be';
+    }
     
     public function getBodyBackground()
     {
@@ -38,6 +43,16 @@ class Skin_Cyborg extends Skins_Skin_Source_Bootswatch
     
     public function getDialogueColor()
     {
-        return 'cecac8';
+        return '94a7c0';
+    }
+    
+    public function getLinkColor()
+    {
+        return '6f9bdb';
+    }
+    
+    public function isDark() : bool
+    {
+        return true;
     }
 }
