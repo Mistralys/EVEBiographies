@@ -18,7 +18,10 @@ class Template_Website_navigation extends Skins_Skin_Template
         ?>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
               <div class="container">
-                <a class="navbar-brand" href="#">EVE Biographies</a>
+                <a class="navbar-brand" href="<?php echo APP_URL ?>">
+                	<img src="<?php echo APP_URL ?>/img/logo.png" width="32"/>
+                	<?php echo $this->screen->getWebsite()->getName() ?>
+            	</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="<?php pt('Toggle navigation') ?>">
                   <span class="navbar-toggler-icon"></span>
                 </button>

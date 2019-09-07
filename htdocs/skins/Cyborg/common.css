@@ -2,12 +2,24 @@ html,
 body {
 background-size:cover;
 background-attachment:fixed;
-padding-top:40px;
 font-size:.96rem;
+}
+
+body{
+padding-top:40px;
 }
 
 P,H1,H2,H3,H4,H5,H6{
 text-shadow:0px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.logo{
+float:right;
+}
+
+.logo IMG{
+width:100%;
+width:60px;
 }
 
 .cover-container {

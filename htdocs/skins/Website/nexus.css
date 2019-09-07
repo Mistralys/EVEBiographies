@@ -11,11 +11,11 @@ margin:0;
 
 .biographies-overview .bio-thumbnail{
 display:inline-block;
-margin-right:13px;
+margin:0 13px 0 0;
 }
 
 .biographies-overview .bio-thumbnail > A > IMG{
-width:128px;
+width:90px;
 border-radius:6px;
 border:solid 1px #3d9bd1;
 }

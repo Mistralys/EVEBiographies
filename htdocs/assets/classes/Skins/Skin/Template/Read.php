@@ -62,14 +62,14 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
         }
         
         $html = $this->_initCSS();
-
+        
         if(!$this->biography->isValid())
         {
-            $html = $this->_renderNotAvailable();
+            $html .= $this->_renderNotAvailable();
         }
         else
         {
-            $html = $this->_renderContent();
+            $html .= $this->_renderContent();
         }
 
         return $html;
@@ -78,8 +78,14 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
     protected function renderFooterText()
     {
         $user = $this->screen->getCharacter();
+        $websiteName = $this->screen->getWebsite()->getName();
 
         ?>
+        	<p class="logo">
+		        <a href="<?php echo APP_URL ?>">
+            		<img src="<?php echo APP_URL ?>/img/logo.png" width="200" title="<?php echo $websiteName ?>"/>
+        		</a>
+        	</p>
             <p>
             	<?php pts('Logged in as %1$s.', $user->getName()) ?>
             	<?php

@@ -144,6 +144,7 @@ abstract class Skins_Skin_Template
             <meta name="description" content="">
             <meta name="author" content="">
             <title><?php echo $this->getTitle() ?></title>
+            <link rel="icon" href="<?php echo APP_URL ?>/favicon.ico" />
             <?php 
                 foreach($includes['styles'] as $url => $def) {
                     ?>
