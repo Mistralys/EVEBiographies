@@ -21,29 +21,29 @@ class Template_Alabaster_read extends Skins_Skin_Template_Read
             <div class="cover-container">
             	<div class="cover-inner">
             		<div class="content-container">
-              <main role="main">
-              	<div class="bio-name">
-                  	<?php
-                  	    if($this->character->hasPortrait()) {
-                            ?><img class="cover-portrait" src="<?php echo $this->character->getPortraitURL() ?>" alt="<?php echo $charName ?>"><?php
-                  	    }
-                    ?>
-                    <h1 class="cover-heading">
-                    	<?php echo $charName ?>
-                    	<span class="cover-subheading"><?php pt('An EVE online biography') ?></span>
-                	</h1>
-                </div>
-                <div class="bio-body">
-                    <?php echo $this->biography->render(); ?>
-                </div>
-              </main>
-
-              <footer>
-                <div class="inner">
-                	<?php echo $this->renderFooterText() ?>
-                </div>
-              </footer>
-              </div>
+                      <main role="main">
+                      	<div class="bio-name">
+                          	<?php
+                          	    if($this->character->hasPortrait()) {
+                                    ?><img class="cover-portrait" src="<?php echo $this->character->getPortraitURL() ?>" alt="<?php echo $charName ?>"><?php
+                          	    }
+                            ?>
+                            <h1 class="cover-heading">
+                            	<?php echo $charName ?>
+                            	<span class="cover-subheading"><?php pt('An EVE Online biography') ?></span>
+                        	</h1>
+                        </div>
+                        <div class="bio-body">
+                            <?php echo $this->biography->render(); ?>
+                        </div>
+                      </main>
+        
+                      <footer>
+                        <div class="inner">
+                        	<?php echo $this->renderFooterText() ?>
+                        </div>
+                      </footer>
+                  </div>
               </div>
             </div>
         <?php
@@ -60,7 +60,7 @@ class Template_Alabaster_read extends Skins_Skin_Template_Read
             	<div class="bio-name">
             		<h1 class="cover-heading">
                     	<?php echo $this->character->getName() ?>
-                    	<span class="cover-subheading"><?php pt('An EVE online biography') ?></span>
+                    	<span class="cover-subheading"><?php pt('An EVE Online biography') ?></span>
                 	</h1>
                 </div>
                 <div class="bio-body">
