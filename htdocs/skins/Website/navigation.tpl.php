@@ -45,7 +45,10 @@ class Template_Website_navigation extends Skins_Skin_Template
                            $char = $this->screen->getCharacter();
                            
                            ?>
-                               <span class="nav-item"><?php pt('Logged in as %1$s', '<i class="fa fa-user-astronaut"></i> <b>'.$char->getName().'</b>') ?></span>
+                               <span class="nav-item">
+                               	   <i class="fa fa-user-astronaut"></i> 
+                               	   <b><?php echo $char->getName() ?></b>
+                           	   </span>
                            	   <a href="<?php echo $this->getScreenURL('Logout') ?>" class="btn btn-warning btn-sm">
                            		    <i class="fa fa-sign-out-alt"></i>
                            		    <?php pt('Log out') ?>
