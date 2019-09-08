@@ -87,7 +87,7 @@ abstract class Skins_Skin_Template_Read extends Skins_Skin_Template
         		</a>
         	</p>
             <p>
-            	<?php pts('Logged in as %1$s.', $user->getName()) ?>
+            	<?php pts('Logged in as %1$s.', $user->getName()) ?><br>
             	<?php
             	    if($user === $this->character)
             	    {

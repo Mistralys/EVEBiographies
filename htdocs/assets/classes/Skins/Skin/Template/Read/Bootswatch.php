@@ -56,7 +56,7 @@ abstract class Skins_Skin_Template_Read_Bootswatch extends Skins_Skin_Template_R
                     ?>
                     <h1 class="cover-heading">
                     	<?php echo $charName ?>
-                    	<span class="cover-subheading"><?php pt('An EVE online biography') ?></span>
+                    	<span class="cover-subheading"><?php pt('An EVE Online biography') ?></span>
                 	</h1>
                 </div>
                 <div class="bio-body">
@@ -84,7 +84,7 @@ abstract class Skins_Skin_Template_Read_Bootswatch extends Skins_Skin_Template_R
             	<div class="bio-name">
             		<h1 class="cover-heading">
                     	<?php echo $this->character->getName() ?>
-                    	<span class="cover-subheading"><?php pt('An EVE online biography') ?></span>
+                    	<span class="cover-subheading"><?php pt('An EVE Online biography') ?></span>
                 	</h1>
                 </div>
                 <div class="bio-body">
