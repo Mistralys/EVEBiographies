@@ -6,6 +6,7 @@
 - Add a preview to the font selection
 - Biographies views counter: avoid exploits and cheating
 - Add the portrait to the publish mail to be able to moderate this as well
-- Add a high contrast skin
+- Add a high contrast skin (switchable by readers)
+- Add font size adjustment (for readers)
 - Add "Partly read" & "Read" stati to keep track of reading progress?
 - Add search to the browser

@@ -212,4 +212,18 @@ abstract class Skins_Skin
         
         return $result;
     }
+
+    public function getThumbTags()
+    {
+        $tags = array();
+        
+        if($this->supportsBackground()) {
+            $tags[] = array(
+                'label' => t('Background'),
+                'title' => t('This skin supports background images.')
+            );
+        }
+        
+        return $tags;
+    }
 }

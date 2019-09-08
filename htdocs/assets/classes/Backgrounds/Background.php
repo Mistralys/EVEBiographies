@@ -128,4 +128,18 @@ class Backgrounds_Background
         $img->resampleByWidth($this->thumbnailWidth);
         $img->save($this->getThumbnailPath());
     }
+    
+    public function getThumbTags()
+    {
+        $tags = array();
+        
+        if($this->hasBlendMode()) {
+            $tags[] = array(
+                'label' => t('Blended'),
+                'title' => t('This background adjusts to the skin\'s color theme.')
+            );
+        }
+        
+        return $tags;
+    }
 }

@@ -339,7 +339,8 @@ class Website_Screen_Write extends Website_Screen
             $thumbs[] = array(
                 'url' => $skin->getThumbnailURL(),
                 'label' => $skin->getLabel(),
-                'value' => $skin->getID()
+                'value' => $skin->getID(),
+                'tags' => $skin->getThumbTags()
             );
         }
 
@@ -356,7 +357,8 @@ class Website_Screen_Write extends Website_Screen
             $thumbs[] = array(
                 'url' => $background->getThumbnailURL(),
                 'label' => $background->getLabel(),
-                'value' => $background->getID()
+                'value' => $background->getID(),
+                'tags' => $background->getThumbTags()
             );
         }
 
@@ -377,12 +379,25 @@ class Website_Screen_Write extends Website_Screen
         $items = array();
         foreach($thumbs as $thumb)
         {
+            $content = '';
+            
+            if(isset($thumb['tags']) && !empty($thumb['tags'])) {
+                foreach($thumb['tags'] as $tag) {
+                    $content .= sprintf(
+                        '<span class="thumb-tag badge badge-info" title="%s">%s</span>',
+                        $tag['title'],
+                        $tag['label']
+                    );
+                }
+            }
+            
             $items[] = sprintf(
-                '<div class="thumb" style="background-image:url(%s)" title="%s" data-value="%s" data-target="%s" onclick="ScreenWrite.SelectThumb($(this));"></div>',
+                '<div class="thumb" style="background-image:url(%s)" title="%s" data-value="%s" data-target="%s" onclick="ScreenWrite.SelectThumb($(this));">%s</div>',
                 $thumb['url'],
                 $thumb['label'],
                 $thumb['value'],
-                $id
+                $id,
+                $content
             );
         }
 

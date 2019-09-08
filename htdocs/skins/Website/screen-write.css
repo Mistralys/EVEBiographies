@@ -35,6 +35,7 @@ margin-top:13px;
 }
 
 .thumbs .thumb{
+position:relative;
 display:inline-block;
 width:130px;
 height:100px;
@@ -60,6 +61,19 @@ border-color:#fff;
 .thumbs .thumb.selected,
 .thumbs .thumb.selected:hover{
 border-color:#2A9FD6;
+}
+
+.thumb-tag{
+position:absolute;
+display:block;
+bottom:6px;
+right:6px;
+cursor:help;
+opacity:0.5;
+}
+
+.thumb-tag:hover{
+opacity:1;
 }
 
 .portrait-container{
