@@ -121,9 +121,7 @@ class Backgrounds_Background
             define('APP_OPTIMIZE_IMAGES', false);
         }
         
-        require_once 'ImageHelper.php';
-        
-        $img = new \ImageHelper($this->getPath());
+        $img = \AppUtils\ImageHelper::createFromFile($this->getPath());
         $img->setQuality(98);
         $img->resampleByWidth($this->thumbnailWidth);
         $img->save($this->getThumbnailPath());
