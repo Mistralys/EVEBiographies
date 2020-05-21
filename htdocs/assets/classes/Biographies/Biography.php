@@ -4,7 +4,7 @@ namespace EVEBiographies;
 
 class Biographies_Biography extends DB_Item
 {
-    const MIN_TEXT_LENGTH = 120;
+    const MIN_TEXT_LENGTH = 10;
 
     public function setText($text) : Biographies_Biography
     {
