@@ -39,12 +39,7 @@ class Characters extends DB_Collection
 
     public function generateSlug($name)
     {
-        require_once 'Transliteration.php';
-
-        $translit = new \Transliteration();
-        $translit->setSpaceReplacement('-');
-
-        return $translit->convert($name);
+        return \AppUtils\ConvertHelper::transliterate($name, '-', false);
     }
 
     public function foreignIDExists($foreignID)

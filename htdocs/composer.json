@@ -7,6 +7,10 @@
         {
             "type":"vcs",
             "url":"https://github.com/Mistralys/HTML_QuickForm2.git"
+        },
+        {
+            "type":"vcs",
+            "url":"https://github.com/Mistralys/application-utils.git"
         }
     ],
     "require" : 
@@ -14,6 +18,7 @@
         "erusev/parsedown" : "1.7.1",
         "zkillboard/crestsso" : "0.0.5",
         "pear/html_quickform2" : "dev-trunk",
-        "phpmailer/phpmailer": "6.0.7"
+        "phpmailer/phpmailer": "6.0.7",
+        "mistralys/application-utils" : "dev-master"
     }
 }

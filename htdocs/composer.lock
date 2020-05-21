@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fd3f651bfee1b17cd00f0cf1cac2f49",
+    "content-hash": "e518ed9aed2cf0cf0bd99cda2a307937",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -51,6 +51,46 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "geshi/geshi",
+            "version": "v1.0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeSHi/geshi-1.0.git",
+                "reference": "5a7b461338d322d941986a656d4d1651452e73dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeSHi/geshi-1.0/zipball/5a7b461338d322d941986a656d4d1651452e73dd",
+                "reference": "5a7b461338d322d941986a656d4d1651452e73dd",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/geshi/",
+                    "src/geshi.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Benny Baumann",
+                    "email": "BenBE@geshi.org",
+                    "homepage": "http://blog.benny-baumann.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generic Syntax Highlighter",
+            "homepage": "http://qbnz.com/highlighter/",
+            "time": "2017-05-05T05:51:25+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -154,6 +194,125 @@
             "time": "2015-03-20T14:31:23+00:00"
         },
         {
+            "name": "mistralys/application-utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mistralys/application-utils.git",
+                "reference": "1bf558c9314480d49e33e123dd1524b427791436"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mistralys/application-utils/zipball/1bf558c9314480d49e33e123dd1524b427791436",
+                "reference": "1bf558c9314480d49e33e123dd1524b427791436",
+                "shasum": ""
+            },
+            "require": {
+                "geshi/geshi": "1.0.9",
+                "neitanod/forceutf8": "2.0.1",
+                "parsecsv/php-parsecsv": "0.4.5",
+                "pear/html_quickform2": "dev-trunk"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AppUtils\\": "src/"
+                },
+                "files": [
+                    "src/NumberInfo.php"
+                ],
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "authors": [
+                {
+                    "email": "s.mordziol@mistralys.eu",
+                    "name": "Sebastian Mordziol",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Drop-in utilities for applications.",
+            "support": {
+                "source": "https://github.com/Mistralys/application-utils/tree/master",
+                "issues": "https://github.com/Mistralys/application-utils/issues"
+            },
+            "time": "2019-09-20T08:59:48+00:00"
+        },
+        {
+            "name": "neitanod/forceutf8",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neitanod/forceutf8.git",
+                "reference": "47c883ab2739e7938a8bb0bfd1c29d48c88858de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neitanod/forceutf8/zipball/47c883ab2739e7938a8bb0bfd1c29d48c88858de",
+                "reference": "47c883ab2739e7938a8bb0bfd1c29d48c88858de",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ForceUTF8\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Sebastián Grignoli",
+                    "email": "grignoli@gmail.com"
+                }
+            ],
+            "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+            "homepage": "https://github.com/neitanod/forceutf8",
+            "time": "2017-05-22T18:50:57+00:00"
+        },
+        {
+            "name": "parsecsv/php-parsecsv",
+            "version": "0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/parsecsv/parsecsv-for-php.git",
+                "reference": "0486a4bf3ef80dfa215f38f865ed8685fbb472c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/parsecsv/parsecsv-for-php/zipball/0486a4bf3ef80dfa215f38f865ed8685fbb472c7",
+                "reference": "0486a4bf3ef80dfa215f38f865ed8685fbb472c7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Myhrberg",
+                    "email": "contact@jimeh.me"
+                }
+            ],
+            "description": "CSV data parser for PHP",
+            "time": "2014-06-03T00:37:04+00:00"
+        },
+        {
             "name": "pear/html_common2",
             "version": "v2.1.2",
             "source": {
@@ -208,12 +367,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mistralys/HTML_QuickForm2.git",
-                "reference": "47e5f79e53aefb62337b5c59c2179482739fe49a"
+                "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/47e5f79e53aefb62337b5c59c2179482739fe49a",
-                "reference": "47e5f79e53aefb62337b5c59c2179482739fe49a",
+                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/722144f68a64b32a9f1a286ed1cb728b99c2ac71",
+                "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71",
                 "shasum": ""
             },
             "require": {
@@ -259,7 +418,7 @@
                 "source": "https://github.com/pear/HTML_QuickForm2",
                 "docs": "https://pear.php.net/manual/en/package.html.html-quickform2.php"
             },
-            "time": "2019-07-30T13:51:34+00:00"
+            "time": "2019-09-16T07:51:59+00:00"
         },
         {
             "name": "pear/pear_exception",
@@ -422,7 +581,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "pear/html_quickform2": 20
+        "pear/html_quickform2": 20,
+        "mistralys/application-utils": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
