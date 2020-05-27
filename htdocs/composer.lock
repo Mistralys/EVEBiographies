@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e518ed9aed2cf0cf0bd99cda2a307937",
+    "content-hash": "333b80b1909ab5fdda04d61f0bfd5c25",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -366,12 +366,12 @@
             "version": "dev-trunk",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mistralys/HTML_QuickForm2.git",
+                "url": "https://github.com/pear/HTML_QuickForm2.git",
                 "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/722144f68a64b32a9f1a286ed1cb728b99c2ac71",
+                "url": "https://api.github.com/repos/pear/HTML_QuickForm2/zipball/722144f68a64b32a9f1a286ed1cb728b99c2ac71",
                 "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71",
                 "shasum": ""
             },
@@ -388,37 +388,33 @@
                     "HTML_QuickForm2": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "email": "avb@php.net",
                     "name": "Alexey Borzov",
+                    "email": "avb@php.net",
                     "role": "Lead"
                 },
                 {
-                    "email": "golgote@mamasam.com",
                     "name": "Bertrand Mansion",
+                    "email": "golgote@mamasam.com",
                     "role": "Lead"
                 }
             ],
             "description": "Provides methods to create, validate and render HTML forms in PHP.",
             "homepage": "https://pear.php.net/package/HTML_QuickForm2/",
             "keywords": [
-                "forms",
+                "Forms",
+                "PEAR",
                 "javascript",
-                "pear",
                 "quickform",
                 "validation",
                 "wizard"
             ],
-            "support": {
-                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTML_QuickForm2",
-                "source": "https://github.com/pear/HTML_QuickForm2",
-                "docs": "https://pear.php.net/manual/en/package.html.html-quickform2.php"
-            },
-            "time": "2019-09-16T07:51:59+00:00"
+            "time": "2019-04-12T08:52:47+00:00"
         },
         {
             "name": "pear/pear_exception",
@@ -477,16 +473,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.0.7",
+            "version": "v6.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59"
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/0c41a36d4508d470e376498c1c0c527aa36a2d59",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
                 "shasum": ""
             },
             "require": {
@@ -495,13 +491,9 @@
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "doctrine/annotations": "1.2.*",
+                "doctrine/annotations": "^1.2",
                 "friendsofphp/php-cs-fixer": "^2.2",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "zendframework/zend-eventmanager": "3.0.*",
-                "zendframework/zend-i18n": "2.7.3",
-                "zendframework/zend-serializer": "2.7.*"
+                "phpunit/phpunit": "^4.8 || ^5.7"
             },
             "suggest": {
                 "ext-mbstring": "Needed to send email in multibyte encoding charset",
@@ -519,16 +511,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1"
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
                 },
                 {
                     "name": "Andy Prevost",
@@ -539,7 +531,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2019-02-01T15:04:28+00:00"
+            "time": "2020-05-27T12:24:03+00:00"
         },
         {
             "name": "zkillboard/crestsso",

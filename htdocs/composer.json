@@ -18,7 +18,7 @@
         "erusev/parsedown" : "1.7.1",
         "zkillboard/crestsso" : "0.0.5",
         "pear/html_quickform2" : "dev-trunk",
-        "phpmailer/phpmailer": "6.0.7",
+        "phpmailer/phpmailer": "6.1.6",
         "mistralys/application-utils" : "dev-master"
     }
 }
