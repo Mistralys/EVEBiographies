@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e518ed9aed2cf0cf0bd99cda2a307937",
+    "content-hash": "795e5b756803bd1f992a0f8f0c8b0884",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -54,20 +54,20 @@
         },
         {
             "name": "geshi/geshi",
-            "version": "v1.0.9.0",
+            "version": "v1.0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeSHi/geshi-1.0.git",
-                "reference": "5a7b461338d322d941986a656d4d1651452e73dd"
+                "reference": "fd22ab78481bf90337862b590e6f7517863926b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeSHi/geshi-1.0/zipball/5a7b461338d322d941986a656d4d1651452e73dd",
-                "reference": "5a7b461338d322d941986a656d4d1651452e73dd",
+                "url": "https://api.github.com/repos/GeSHi/geshi-1.0/zipball/fd22ab78481bf90337862b590e6f7517863926b8",
+                "reference": "fd22ab78481bf90337862b590e6f7517863926b8",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7"
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.2"
             },
             "type": "library",
             "autoload": {
@@ -90,7 +90,7 @@
             ],
             "description": "Generic Syntax Highlighter",
             "homepage": "http://qbnz.com/highlighter/",
-            "time": "2017-05-05T05:51:25+00:00"
+            "time": "2019-10-20T20:54:46+00:00"
         },
         {
             "name": "ircmaxell/random-lib",
@@ -195,26 +195,30 @@
         },
         {
             "name": "mistralys/application-utils",
-            "version": "dev-master",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Mistralys/application-utils.git",
-                "reference": "1bf558c9314480d49e33e123dd1524b427791436"
+                "reference": "51c049243404bcf5fe9c950cd74cd8267e3812ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mistralys/application-utils/zipball/1bf558c9314480d49e33e123dd1524b427791436",
-                "reference": "1bf558c9314480d49e33e123dd1524b427791436",
+                "url": "https://api.github.com/repos/Mistralys/application-utils/zipball/51c049243404bcf5fe9c950cd74cd8267e3812ce",
+                "reference": "51c049243404bcf5fe9c950cd74cd8267e3812ce",
                 "shasum": ""
             },
             "require": {
-                "geshi/geshi": "1.0.9",
+                "geshi/geshi": "1.0.9.1",
+                "mistralys/html_quickform2": ">=2.1",
                 "neitanod/forceutf8": "2.0.1",
-                "parsecsv/php-parsecsv": "0.4.5",
-                "pear/html_quickform2": "dev-trunk"
+                "parsecsv/php-parsecsv": "0.4.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "8.2.5"
+                "phpstan/phpstan": "0.12.4",
+                "phpunit/phpunit": "8.5.3"
+            },
+            "suggest": {
+                "mistralys/application-localization": "Required to translate available texts, from date related methods or file size labels for example."
             },
             "type": "library",
             "autoload": {
@@ -222,25 +226,85 @@
                     "AppUtils\\": "src/"
                 },
                 "files": [
-                    "src/NumberInfo.php"
+                    "src/functions.php"
                 ],
                 "classmap": [
                     "src/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
             "authors": [
                 {
-                    "email": "s.mordziol@mistralys.eu",
                     "name": "Sebastian Mordziol",
+                    "email": "s.mordziol@mistralys.eu",
                     "role": "Lead"
                 }
             ],
-            "description": "Drop-in utilities for applications.",
-            "support": {
-                "source": "https://github.com/Mistralys/application-utils/tree/master",
-                "issues": "https://github.com/Mistralys/application-utils/issues"
+            "description": "Drop-in utilities for PHP applications.",
+            "time": "2020-09-07T12:18:16+00:00"
+        },
+        {
+            "name": "mistralys/html_quickform2",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mistralys/HTML_QuickForm2.git",
+                "reference": "2b7d254646fe9e170b00e666660b0e2906221d82"
             },
-            "time": "2019-09-20T08:59:48+00:00"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/2b7d254646fe9e170b00e666660b0e2906221d82",
+                "reference": "2b7d254646fe9e170b00e666660b0e2906221d82",
+                "shasum": ""
+            },
+            "require": {
+                "pear/html_common2": "^2.1",
+                "pear/pear_exception": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "8.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTML_QuickForm2": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Borzov",
+                    "email": "avb@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Bertrand Mansion",
+                    "email": "golgote@mamasam.com",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Sebastian Mordziol",
+                    "email": "s.mordziol@mistralys.eu",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "Provides methods to create, validate and render HTML forms in PHP.",
+            "homepage": "https://pear.php.net/package/HTML_QuickForm2/",
+            "keywords": [
+                "Forms",
+                "PEAR",
+                "javascript",
+                "quickform",
+                "validation",
+                "wizard"
+            ],
+            "time": "2019-10-09T08:13:47+00:00"
         },
         {
             "name": "neitanod/forceutf8",
@@ -366,21 +430,22 @@
             "version": "dev-trunk",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mistralys/HTML_QuickForm2.git",
-                "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71"
+                "url": "https://github.com/pear/HTML_QuickForm2.git",
+                "reference": "a0c26ae15666a995fc5acfe71743d4214a91b4b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mistralys/HTML_QuickForm2/zipball/722144f68a64b32a9f1a286ed1cb728b99c2ac71",
-                "reference": "722144f68a64b32a9f1a286ed1cb728b99c2ac71",
+                "url": "https://api.github.com/repos/pear/HTML_QuickForm2/zipball/a0c26ae15666a995fc5acfe71743d4214a91b4b8",
+                "reference": "a0c26ae15666a995fc5acfe71743d4214a91b4b8",
                 "shasum": ""
             },
             "require": {
                 "pear/html_common2": "^2.1",
-                "pear/pear_exception": "^1.0"
+                "pear/pear_exception": "^1.0",
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^3.7|^4.8|^5.7"
+                "phpunit/phpunit": "^4.8|^5.7"
             },
             "type": "library",
             "autoload": {
@@ -388,50 +453,46 @@
                     "HTML_QuickForm2": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "email": "avb@php.net",
                     "name": "Alexey Borzov",
+                    "email": "avb@php.net",
                     "role": "Lead"
                 },
                 {
-                    "email": "golgote@mamasam.com",
                     "name": "Bertrand Mansion",
+                    "email": "golgote@mamasam.com",
                     "role": "Lead"
                 }
             ],
             "description": "Provides methods to create, validate and render HTML forms in PHP.",
             "homepage": "https://pear.php.net/package/HTML_QuickForm2/",
             "keywords": [
-                "forms",
+                "Forms",
+                "PEAR",
                 "javascript",
-                "pear",
                 "quickform",
                 "validation",
                 "wizard"
             ],
-            "support": {
-                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=HTML_QuickForm2",
-                "source": "https://github.com/pear/HTML_QuickForm2",
-                "docs": "https://pear.php.net/manual/en/package.html.html-quickform2.php"
-            },
-            "time": "2019-09-16T07:51:59+00:00"
+            "time": "2020-08-01T22:13:08+00:00"
         },
         {
             "name": "pear/pear_exception",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/PEAR_Exception.git",
-                "reference": "8c18719fdae000b690e3912be401c76e406dd13b"
+                "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/8c18719fdae000b690e3912be401c76e406dd13b",
-                "reference": "8c18719fdae000b690e3912be401c76e406dd13b",
+                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
+                "reference": "dbb42a5a0e45f3adcf99babfb2a1ba77b8ac36a7",
                 "shasum": ""
             },
             "require": {
@@ -447,9 +508,9 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "PEAR": ""
-                }
+                "classmap": [
+                    "PEAR/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "include-path": [
@@ -473,20 +534,20 @@
             "keywords": [
                 "exception"
             ],
-            "time": "2015-02-10T20:07:52+00:00"
+            "time": "2019-12-10T10:24:42+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.0.7",
+            "version": "v6.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59"
+                "reference": "2c2370ba3df7034f9eb7b8f387c97b52b2ba5ad0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/0c41a36d4508d470e376498c1c0c527aa36a2d59",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/2c2370ba3df7034f9eb7b8f387c97b52b2ba5ad0",
+                "reference": "2c2370ba3df7034f9eb7b8f387c97b52b2ba5ad0",
                 "shasum": ""
             },
             "require": {
@@ -495,13 +556,9 @@
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "doctrine/annotations": "1.2.*",
+                "doctrine/annotations": "^1.2",
                 "friendsofphp/php-cs-fixer": "^2.2",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "zendframework/zend-eventmanager": "3.0.*",
-                "zendframework/zend-i18n": "2.7.3",
-                "zendframework/zend-serializer": "2.7.*"
+                "phpunit/phpunit": "^4.8 || ^5.7"
             },
             "suggest": {
                 "ext-mbstring": "Needed to send email in multibyte encoding charset",
@@ -519,16 +576,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1"
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
                 },
                 {
                     "name": "Andy Prevost",
@@ -539,7 +596,13 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2019-02-01T15:04:28+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/synchro",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-14T18:50:27+00:00"
         },
         {
             "name": "zkillboard/crestsso",
@@ -581,11 +644,11 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "pear/html_quickform2": 20,
-        "mistralys/application-utils": 20
+        "pear/html_quickform2": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
